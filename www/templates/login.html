@@ -1,0 +1,46 @@
+<ion-view title="Login">
+    <ion-content overflow-scroll="true">
+
+      <div class="row row-center" style="height: 100%">
+        <div class="col">
+          <div style="text-align:center;">
+            <img
+            width="30%"
+            height="auto"
+            src="img/gTl6hCTuSmu0ESIRygKc_vali-logo.png">
+          </div>
+
+          <form class="list">
+            <div class="spacer" style="width: 100%; height: 8px;"></div>
+
+            <ion-list>
+              <label class="item item-input" name="email">
+                <span class="input-label">Email</span>
+                <input type="text" ng-model="user.email" required>
+              </label>
+              <label class="item item-input" name="password">
+                <span class="input-label">Senha</span>
+                <input type="password" ng-model="user.password" required>
+              </label>
+            </ion-list>
+
+            <div class="spacer" style="width: 100%; height: 10px;"></div>
+
+            <button
+              id="login-button"
+              ng-click="login()"
+              class="button button-outline button-royal button-block">
+              Log in
+            </button>
+
+            <a
+              id="signup-button"
+              ui-sref="signup"
+              class="button button-positive button-block button-clear">
+              Não tenho uma conta ainda :(
+            </a>
+          </form>
+        </div>
+      </div>
+    </ion-content>
+</ion-view>
