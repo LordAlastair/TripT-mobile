@@ -19,29 +19,42 @@ angular.module('app.controllers', [])
   $scope.loading = false;
   $scope.filtro = '';
 
-  getVeiculos();
+  $scope.toggleDelete = toggleDelete;
 
-  $scope.toggleDelete = function() {
-    $scope.showDelete = !$scope.showDelete;
-  };
-  
-  function getVeiculos() {
+  _init();
+
+  function _init() {
+    _getVeiculos();
+  }
+
+  function _getVeiculos() {
     $scope.loading = true;
 
-    Veiculo.query(function(veiculos) {
+    Veiculo.query(function (veiculos) {
       $scope.loading = false;
-
       $scope.veiculos = veiculos;
     });
+  }
+
+  function toggleDelete() {
+    $scope.showDelete = !$scope.showDelete;
   }
 })
 
 .controller('VeiculoCtrl', function($scope, $stateParams, Veiculo) {
-  Veiculo.get({
-    vei_cd_veiculo: $stateParams.vei_cd_veiculo
-  }, function(veiculo) {
-    $scope.veiculo = veiculo;
-  });
+  _init();
+
+  function _init() {
+    _getVeiculo($stateParams.vei_cd_veiculo);
+  }
+
+  function _getVeiculo(vei_cd_veiculo) {
+    Veiculo.get({
+      vei_cd_veiculo: vei_cd_veiculo
+    }, function(veiculo) {
+      $scope.veiculo = veiculo;
+    });
+  }
 })
 
 .controller('SignupCtrl', function($scope) {

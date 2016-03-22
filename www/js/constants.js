@@ -7,5 +7,5 @@ angular
 })
 .constant('USER_ROLES', {})
 .constant('$ionicLoadingConfig', {
-  template: '<ion-spinner></ion-spinner>'
+  template: '<ion-spinner class="spinner-royal"></ion-spinner>'
 });;
