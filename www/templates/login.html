@@ -1,13 +1,12 @@
-<ion-view title="Login">
+<ion-view hide-nav-bar="true">
     <ion-content overflow-scroll="true">
-
       <div class="row row-center" style="height: 100%">
-        <div class="col">
+        <div class ="col">
           <div style="text-align:center;">
             <img
-            width="30%"
-            height="auto"
-            src="img/gTl6hCTuSmu0ESIRygKc_vali-logo.png">
+              width="30%"
+              height="auto"
+              src="img/gTl6hCTuSmu0ESIRygKc_vali-logo.png">
           </div>
 
           <form class="list">
@@ -16,7 +15,7 @@
             <ion-list>
               <label class="item item-input" name="email">
                 <span class="input-label">Email</span>
-                <input type="text" ng-model="user.email" required>
+                <input type="email" ng-model="user.email" required>
               </label>
               <label class="item item-input" name="password">
                 <span class="input-label">Senha</span>
@@ -29,6 +28,7 @@
             <button
               id="login-button"
               ng-click="login()"
+              type="button"
               class="button button-outline button-royal button-block">
               Log in
             </button>

@@ -1,6 +1,6 @@
 angular
 .module('app.routes', [])
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function ($stateProvider, $urlRouterProvider) {
 
   $stateProvider
   .state('menu-fornecedores', {
@@ -24,7 +24,7 @@ angular
   .state('menu-fornecedores.veiculos', {
     url: '/veiculos',
     views: {
-      'side-menu21': {
+      'navigationView': {
         templateUrl: 'templates/veiculos.html',
         controller: 'VeiculosCtrl'
       }
@@ -32,15 +32,14 @@ angular
   })
 
   .state('menu-fornecedores.veiculo', {
-    url: '/veiculo/:id',
+    url: '/veiculo/:vei_cd_veiculo',
     views: {
-      'menuContent': {
+      'navigationView': {
         templateUrl: 'templates/veiculo.html',
         controller: 'VeiculoCtrl'
       }
     }
   })
-
 
   $urlRouterProvider.otherwise('/login')
 });
