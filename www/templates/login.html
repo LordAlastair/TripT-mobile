@@ -1,27 +1,26 @@
 <ion-view hide-nav-bar="true">
     <ion-content overflow-scroll="true">
       <div class="row row-center" style="height: 100%">
-        <div class ="col">
-          <div style="text-align:center;">
+        <div class="col">
+          <div class="text-center">
             <img
               width="30%"
               height="auto"
-              src="img/gTl6hCTuSmu0ESIRygKc_vali-logo.png">
+              src="img/vali-logo.png">
           </div>
 
-          <form class="list">
+          <ion-list>
             <div class="spacer" style="width: 100%; height: 8px;"></div>
 
-            <ion-list>
-              <label class="item item-input" name="email">
-                <span class="input-label">Email</span>
-                <input type="email" ng-model="user.email" required>
-              </label>
-              <label class="item item-input" name="password">
-                <span class="input-label">Senha</span>
-                <input type="password" ng-model="user.password" required>
-              </label>
-            </ion-list>
+            <label class="item item-input" name="email">
+              <span class="input-label">Email</span>
+              <input type="email" ng-model="usuario.usu_ds_email" required>
+            </label>
+
+            <label class="item item-input" name="password">
+              <span class="input-label">Senha</span>
+              <input type="password" ng-model="usuario.usu_ds_senha" required>
+            </label>
 
             <div class="spacer" style="width: 100%; height: 10px;"></div>
 
@@ -39,7 +38,7 @@
               class="button button-positive button-block button-clear">
               Não tenho uma conta ainda :(
             </a>
-          </form>
+          </ion-list>
         </div>
       </div>
     </ion-content>

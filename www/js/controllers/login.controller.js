@@ -1,7 +1,7 @@
 angular
 .module('app.controllers')
 .controller('LoginCtrl', function($scope, $state, $ionicLoading, $timeout) {
-  $scope.user = {};
+  $scope.usuario = {};
 
   $scope.login = function() {
     $ionicLoading.show();
