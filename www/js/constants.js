@@ -6,7 +6,10 @@ angular
   notAuthenticated: 'auth-not-authenticated',
   notAuthorized: 'auth-not-authorized'
 })
-.constant('USER_ROLES', {})
+.constant('USER_ROLES', {
+  client: 'client_role',
+  fornecedor: 'fornecedor_role'
+})
 .constant('$ionicLoadingConfig', {
   template: '<ion-spinner class="spinner-royal"></ion-spinner>'
-});;
+});
