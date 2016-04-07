@@ -1,15 +1,13 @@
 angular
 .module('app.controllers')
-.controller('SignupCtrl', function($scope, SignupService, $state, $ionicLoading, $ionicPopup) {
-  $scope.usuario = {
-    usu_ds_email: '',
-    usu_ds_senha: ''
-  };
+.controller('SignupCtrl', function($scope, UsuarioService, $state, $ionicLoading, $ionicPopup) {
+  $scope.usuario = {};
 
   $scope.signup = function() {
     $ionicLoading.show();
 
-    SignupService($scope.usuario)
+    UsuarioService
+    .signup($scope.usuario)
     .then(_success)
     .catch(_error)
     .finally(_finally);
@@ -34,7 +32,6 @@ angular
   }
 
   function _getErrors(err) {
-    console.log(err);
     return err.data.map(function(error) {
       return error.msg;
     }).join("<br>");
