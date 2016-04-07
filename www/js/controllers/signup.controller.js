@@ -1,6 +1,6 @@
 angular
 .module('app.controllers')
-.controller('SignupCtrl', function($scope, SignupService, $ionicLoading, $ionicPopup) {
+.controller('SignupCtrl', function($scope, SignupService, $state, $ionicLoading, $ionicPopup) {
   $scope.usuario = {
     usu_ds_email: '',
     usu_ds_senha: ''
@@ -16,17 +16,25 @@ angular
   };
 
   function _success(data) {
-    console.log(data);
+    var alert = $ionicPopup.alert({
+     title: 'Yey!',
+     template: 'Usuário criado!'
+    });
+
+    alert.then(function() {
+      $state.go('login');
+    });
   }
 
   function _error(err) {
-    var alert = $ionicPopup.alert({
+    $ionicPopup.alert({
       title: 'Vish, deu ruim..',
       template: _getErrors(err)
     });
   }
 
   function _getErrors(err) {
+    console.log(err);
     return err.data.map(function(error) {
       return error.msg;
     }).join("<br>");
