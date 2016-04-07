@@ -4,9 +4,10 @@ angular
 
   $stateProvider
   .state('menu-fornecedores', {
+    abstract:true,
     url: '/menu-fornecedores',
     templateUrl: 'templates/menu-fornecedores.html',
-    abstract:true
+    controller: 'MenuFornecedoresCtrl'
   })
 
   .state('login', {
