@@ -1,6 +1,8 @@
 angular
 .module('app.controllers')
 .controller('LoginCtrl', function($scope, $state, $ionicLoading,  $ionicPopup, UsuarioService) {
+  _init();
+
   $scope.usuario = {};
 
   $scope.login = function() {
@@ -12,6 +14,12 @@ angular
     .catch(_error)
     .finally(_finally);
   };
+
+  function _init() {
+    if (localStorage.getItem("token")) {
+      $state.go("menu-fornecedores.veiculos");
+    }
+  }
 
   function _success(response) {
     localStorage.setItem("token", response.data.token);
