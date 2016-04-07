@@ -1,11 +1,13 @@
 angular
 .module('app.services')
 .factory('SignupService', function($http, BACKEND_URL) {
-  return function SignupService(usuario) {
+  var SignupService = function (usuario) {
     return $http({
       method: 'POST',
-      url: BACKEND_URL + '/signup',
+      url: BACKEND_URL + '/usuario/signup',
       data: usuario
     });
-  }
-})
+  };
+
+  return SignupService;
+});
