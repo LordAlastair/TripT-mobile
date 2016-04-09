@@ -1,5 +1,5 @@
 angular
 .module('app.services')
-.factory('Veiculo', ['AuthResource', function(AuthResource) {
-  return AuthResource('/veiculo/:vei_cd_veiculo');
+.factory('Veiculo', ['$resource', 'BACKEND_URL', function($resource, BACKEND_URL) {
+  return $resource(BACKEND_URL + '/veiculo/:vei_cd_veiculo');
 }]);
