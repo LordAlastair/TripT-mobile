@@ -42,5 +42,11 @@ angular
     }
   })
 
+  .state('recovery', {
+    url: '/recovery',
+    templateUrl: 'templates/recovery.html',
+    controller: 'RecoveryCtrl'
+  })
+
   $urlRouterProvider.otherwise('/login')
 });
