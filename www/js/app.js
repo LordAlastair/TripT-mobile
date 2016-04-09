@@ -7,7 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 angular
 .module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services'])
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $http) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -19,4 +19,6 @@ angular
       StatusBar.styleDefault();
     }
   });
+
+  $http.defaults.headers.common.Authorization = localStorage.getItem("token");
 })

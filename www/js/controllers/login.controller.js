@@ -27,7 +27,6 @@ angular
   }
 
   function _error(err) {
-    console.log(err);
     $ionicPopup.alert({
       title: 'Vish, deu ruim..',
       template: _getErrors(err)
