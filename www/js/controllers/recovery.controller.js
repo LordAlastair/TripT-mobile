@@ -14,7 +14,10 @@ angular
   };
 
   function _success(response) {
-    console.log(response);
+    $ionicPopup.alert({
+      title: 'Recovery',
+      template: 'Sua nova senha foi enviada para seu email.'
+    });
   }
 
   function _error(err) {
