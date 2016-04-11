@@ -1,6 +1,5 @@
 angular
 .module('app')
-// .constant('BACKEND_URL', 'http://192.168.99.100:3000')
 .constant('BACKEND_URL', 'http://localhost:3000')
 .constant('AUTH_EVENTS', {
   notAuthenticated: 'auth-not-authenticated',
