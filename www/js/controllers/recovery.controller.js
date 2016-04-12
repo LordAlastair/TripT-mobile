@@ -18,6 +18,8 @@ angular
       title: 'Recovery',
       template: 'Sua nova senha foi enviada para seu email.'
     });
+    $scope.usuario = {};
+    $scope.state.go('login');
   }
 
   function _error(err) {
