@@ -19,7 +19,7 @@ angular
       template: 'Sua nova senha foi enviada para seu email.'
     });
     $scope.usuario = {};
-    $scope.state.go('login');
+    $state.go('login');
   }
 
   function _error(err) {
