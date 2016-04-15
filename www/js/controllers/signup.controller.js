@@ -15,7 +15,7 @@ angular
 
   function _success(data) {
     var alert = $ionicPopup.alert({
-     title: 'Yey!',
+     title: 'Yay!',
      template: 'Usuário criado!'
     });
 

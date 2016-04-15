@@ -47,6 +47,11 @@ angular
     templateUrl: 'templates/recovery.html',
     controller: 'RecoveryCtrl'
   })
+   .state('pagina-inicial', {
+    url: '/pagina-inicial',
+    templateUrl: 'templates/pagina-inicial.html',
+    controller: 'PaginaInicialCtrl'
+   })
 
-  $urlRouterProvider.otherwise('/login')
+  $urlRouterProvider.otherwise('/pagina-inicial')
 });
