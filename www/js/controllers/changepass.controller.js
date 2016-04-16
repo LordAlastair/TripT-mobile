@@ -1,13 +1,13 @@
 angular
 .module('app.controllers')
-.controller('RecoveryCtrl', function($scope, $state, $ionicLoading,  $ionicPopup, UsuarioService) {
+.controller('ChangepassCtrl', function($scope, $state, $ionicLoading,  $ionicPopup, UsuarioService) {
   $scope.usuario = {};
 
-  $scope.recovery = function() {
+  $scope.changepass = function() {
     $ionicLoading.show();
 
     UsuarioService
-    .recovery($scope.usuario)
+    .changepass($scope.usuario)
     .then(_success)
     .catch(_error)
     .finally(_finally);
@@ -15,19 +15,17 @@ angular
 
   function _success(response) {
     $ionicPopup.alert({
-      title: 'Recovery',
-      template: 'Sua nova senha foi enviada para seu email.'
+      title: 'Sucesso!',
+      template: 'Sua senha foi alterada com sucesso.'
     });
     $scope.usuario = {};
-    $state.go('login');
   }
 
   function _error(err) {
     $ionicPopup.alert({
-      title: 'Vish, deu ruim',
+      title: 'Vish, deu ruim..',
       template: _getErrors(err)
     });
-
   }
 
   function _finally() {
