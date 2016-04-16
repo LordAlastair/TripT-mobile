@@ -23,10 +23,11 @@ angular
   }
 
   function _error(err) {
-    $ionicPopup.alert({
-      title: 'Vish, deu ruim..',
-      template: _getErrors(err)
-    });
+    if(err)
+      $ionicPopup.alert({
+        title: 'Vish, deu ruim..',
+        template: _getErrors(err)
+      });
   }
 
   function _finally() {
@@ -34,8 +35,8 @@ angular
   }
 
   function _getErrors(err) {
-    return err.data.map(function(error) {
-      return error.msg;
-    }).join("<br>");
-  }
+    return err.data.map(function(error){
+        return error.msg;
+      }).join("<br>");
+    }
 })

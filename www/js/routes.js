@@ -22,6 +22,12 @@ angular
     controller: 'SignupCtrl'
   })
 
+  .state('recovery', {
+    url: '/recovery',
+    templateUrl: 'templates/recovery.html',
+    controller: 'RecoveryCtrl'
+  })
+
   .state('menu-fornecedores.veiculos', {
     url: '/veiculos',
     views: {
@@ -32,21 +38,16 @@ angular
     }
   })
 
-  .state('menu-fornecedores.veiculo', {
-    url: '/veiculo/:vei_cd_veiculo',
+  .state('menu-fornecedores.changepass', {
+    url: '/changepass',
     views: {
       'navigationView': {
-        templateUrl: 'templates/veiculo.html',
-        controller: 'VeiculoCtrl'
+        templateUrl: 'templates/changepass.html',
+        controller: 'ChangepassCtrl'
       }
     }
   })
 
-  .state('recovery', {
-    url: '/recovery',
-    templateUrl: 'templates/recovery.html',
-    controller: 'RecoveryCtrl'
-  })
 
   $urlRouterProvider.otherwise('/login')
 });
