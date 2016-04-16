@@ -38,6 +38,16 @@ angular
     }
   })
 
+  .state('menu-fornecedores.veiculo', {
+    url: '/veiculo/:vei_cd_veiculo',
+    views: {
+      'navigationView': {
+        templateUrl: 'templates/veiculo.html',
+        controller: 'VeiculoCtrl'
+      }
+    }
+  })
+
   .state('menu-fornecedores.changepass', {
     url: '/changepass',
     views: {
