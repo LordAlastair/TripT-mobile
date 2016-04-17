@@ -11,5 +11,5 @@ angular
   fornecedor: 'fornecedor_role'
 })
 .constant('$ionicLoadingConfig', {
-  template: '<ion-spinner class="spinner-royal"></ion-spinner>'
+  template: '<ion-spinner icon="ripple" class="spinner-positive"></ion-spinner>'
 });
