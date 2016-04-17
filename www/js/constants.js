@@ -1,6 +1,7 @@
 angular
 .module('app')
 .constant('BACKEND_URL', 'http://localhost:3000')
+.constant('TOKEN_KEY', "token")
 .constant('AUTH_EVENTS', {
   notAuthenticated: 'auth-not-authenticated',
   notAuthorized: 'auth-not-authorized'

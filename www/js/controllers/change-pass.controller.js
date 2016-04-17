@@ -1,13 +1,13 @@
 angular
 .module('app.controllers')
-.controller('ChangepassCtrl', function($scope, $state, $ionicLoading,  $ionicPopup, UsuarioService) {
-  $scope.usuario = {};
+.controller('ChangePassCtrl', function($scope, $state, $ionicLoading, $ionicPopup, SessionService, UsuarioService) {
+  $scope.usuario = SessionService.getUserData();
 
-  $scope.changepass = function() {
+  $scope.changePass = function() {
     $ionicLoading.show();
 
     UsuarioService
-    .changepass($scope.usuario)
+    .changePass($scope.usuario)
     .then(_success)
     .catch(_error)
     .finally(_finally);
@@ -18,6 +18,7 @@ angular
       title: 'Sucesso!',
       template: 'Sua senha foi alterada com sucesso.'
     });
+
     $scope.usuario = {};
   }
 
@@ -33,8 +34,8 @@ angular
   }
 
   function _getErrors(err) {
-    return err.data.map(function(error){
-        return error.msg;
-      }).join("<br>");
-    }
+    return err.data.map(function(error) {
+      return error.msg;
+    }).join("<br>");
+  }
 })

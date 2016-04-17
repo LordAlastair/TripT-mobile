@@ -1,6 +1,6 @@
 angular
 .module('app.controllers')
-.controller('LoginCtrl', function($scope, $state, $ionicLoading,  $ionicPopup, UsuarioService) {
+.controller('LoginCtrl', function($scope, $state, $ionicLoading, $ionicPopup, UsuarioService, SessionService) {
   _init();
 
   $scope.usuario = {};
@@ -16,14 +16,14 @@ angular
   };
 
   function _init() {
-    if (localStorage.getItem("token")) {
-      $state.go("menu-fornecedores.veiculos");
+    if (SessionService.hasToken()) {
+      $state.go("menu-fornecedor.veiculos");
     }
   }
 
   function _success(response) {
-    localStorage.setItem("token", response.data.token);
-    $state.go('menu-fornecedores.veiculos');
+    SessionService.setToken(response.data.token);
+    $state.go('menu-fornecedor.veiculos');
   }
 
   function _error(err) {

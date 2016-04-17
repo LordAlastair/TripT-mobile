@@ -3,11 +3,11 @@ angular
 .config(function ($stateProvider, $urlRouterProvider) {
 
   $stateProvider
-  .state('menu-fornecedores', {
-    abstract:true,
-    url: '/menu-fornecedores',
-    templateUrl: 'templates/menu-fornecedores.html',
-    controller: 'MenuFornecedoresCtrl'
+  .state('menu-fornecedor', {
+    abstract: true,
+    url: '/menu-fornecedor',
+    templateUrl: 'templates/menu-fornecedor.html',
+    controller: 'MenuFornecedorCtrl'
   })
 
   .state('login', {
@@ -28,7 +28,7 @@ angular
     controller: 'RecoveryCtrl'
   })
 
-  .state('menu-fornecedores.veiculos', {
+  .state('menu-fornecedor.veiculos', {
     url: '/veiculos',
     views: {
       'navigationView': {
@@ -38,7 +38,7 @@ angular
     }
   })
 
-  .state('menu-fornecedores.veiculo', {
+  .state('menu-fornecedor.veiculo', {
     url: '/veiculo/:vei_cd_veiculo',
     views: {
       'navigationView': {
@@ -48,23 +48,21 @@ angular
     }
   })
 
-  .state('menu-fornecedores.changepass', {
-    url: '/changepass',
+  .state('menu-fornecedor.changePass', {
+    url: '/changePass',
     views: {
       'navigationView': {
-        templateUrl: 'templates/changepass.html',
-        controller: 'ChangepassCtrl'
+        templateUrl: 'templates/change-pass.html',
+        controller: 'ChangePassCtrl'
       }
     }
   })
-   .state('pagina-inicial', {
+
+  .state('pagina-inicial', {
     url: '/pagina-inicial',
-    templateUrl: 'templates/pagina-inicial.html',
-    controller: 'PaginaInicialCtrl'
-   })
+    templateUrl: 'templates/home-fornecedor.html',
+    controller: 'HomeFornecedorCtrl'
+  })
 
-
-  $urlRouterProvider.otherwise('/pagina-inicial')
-
-
+  $urlRouterProvider.otherwise('/login');
 });

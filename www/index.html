@@ -5,9 +5,10 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title>ValiApp</title>
 
-    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/ionic.app.min.css">
     <script src="lib/ionic/js/ionic.bundle.js"></script>
     <script src="lib/angular-resource/angular-resource.js"></script>
+    <script src="lib/angular-jwt/dist/angular-jwt.js"></script>
 
     <script src="cordova.js"></script>
 
@@ -19,21 +20,21 @@
     <script src="js/services/usuario.service.js"></script>
     <script src="js/services/veiculo.service.js"></script>
     <script src="js/services/caracteristica.service.js"></script>
+    <script src="js/services/session.service.js"></script>
 
     <script src="js/controllers/app.controllers.js"></script>
-    <script src="js/controllers/pagina-inicial.controller.js"></script>
+    <script src="js/controllers/home-fornecedor.controller.js"></script>
+    <script src="js/controllers/menu-fornecedor.controller.js"></script>
     <script src="js/controllers/login.controller.js"></script>
     <script src="js/controllers/signup.controller.js"></script>
     <script src="js/controllers/recovery.controller.js"></script>
-    <script src="js/controllers/changepass.controller.js"></script>
+    <script src="js/controllers/change-pass.controller.js"></script>
     <script src="js/controllers/veiculo.controller.js"></script>
     <script src="js/controllers/veiculos.controller.js"></script>
-    <script src="js/controllers/menu-fornecedores.controller.js"></script>
- 
   </head>
 
   <body ng-app="app">
-    <ion-nav-bar class="bar-royal">
+    <ion-nav-bar class="bar-positive">
       <ion-nav-back-button>
       </ion-nav-back-button>
     </ion-nav-bar>

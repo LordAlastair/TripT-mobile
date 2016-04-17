@@ -21,7 +21,7 @@
       can-swipe="true">
 
       <ion-item class="text-center" ng-if="loading">
-        <ion-spinner class="spinner-royal"></ion-spinner>
+        <ion-spinner class="spinner-positive"></ion-spinner>
       </ion-item>
 
       <ion-item ng-if="!veiculos.length && !loading">
@@ -30,7 +30,7 @@
 
       <ion-item
         ng-repeat="veiculo in filteredVeiculos = (veiculos | filter: filtro)"
-        ui-sref="menu-fornecedores.veiculo({ vei_cd_veiculo: veiculo.vei_cd_veiculo })">
+        ui-sref="menu-fornecedor.veiculo({ vei_cd_veiculo: veiculo.vei_cd_veiculo })">
 
         {{veiculo.vei_ds_modelo}} - {{veiculo.vei_ds_placa}}
 

@@ -1,5 +1,5 @@
 angular
-.module('app', ['ionic', 'app.controllers', 'app.routes', 'app.services'])
+.module('app', ['ionic', 'angular-jwt', 'app.controllers', 'app.routes', 'app.services'])
 .run(function($ionicPlatform, $http) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
