@@ -17,13 +17,13 @@ angular
 
   function _init() {
     if (SessionService.hasToken()) {
-      $state.go("menu-fornecedor.veiculos");
+      $state.go("menu-fornecedor.home");
     }
   }
 
   function _success(response) {
     SessionService.setToken(response.data.token);
-    $state.go('menu-fornecedor.veiculos');
+    $state.go('menu-fornecedor.home');
   }
 
   function _error(err) {

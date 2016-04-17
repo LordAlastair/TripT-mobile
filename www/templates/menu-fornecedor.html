@@ -16,9 +16,36 @@
 
     <ion-content padding="false" class="side-menu-left has-header">
       <ion-list>
-        <ion-item ui-sref="menu-fornecedor.veiculos" menu-close>Veículos</ion-item>
-        <ion-item ui-sref="menu-fornecedor.changePass" menu-close>Alterar Senha</ion-item>
-        <ion-item ng-click="logout()">Log out</ion-item>
+        <ion-item
+          class="item-icon-left"
+          ui-sref="menu-fornecedor.home"
+          menu-close>
+          <i class="icon ion-home"></i>
+          Pagina Inicial
+        </ion-item>
+
+        <ion-item
+          class="item-icon-left"
+          ui-sref="menu-fornecedor.veiculos"
+          menu-close>
+          <i class="icon ion-android-car"></i>
+          Veículos
+        </ion-item>
+
+        <ion-item
+          class="item-icon-left"
+          ui-sref="menu-fornecedor.changePass"
+          menu-close>
+          <i class="icon ion-lock-combination"></i>
+          Alterar Senha
+        </ion-item>
+
+        <ion-item
+          class="item-icon-left"
+          ng-click="logout()">
+          <i class="icon ion-ios-locked"></i>
+          Log out
+        </ion-item>
       </ion-list>
     </ion-content>
   </ion-side-menu>

@@ -28,6 +28,16 @@ angular
     controller: 'RecoveryCtrl'
   })
 
+  .state('menu-fornecedor.home', {
+    url: '/home-fornecedor',
+    views: {
+      'navigationView': {
+        templateUrl: 'templates/home-fornecedor.html',
+        controller: 'HomeFornecedorCtrl'
+      }
+    }
+  })
+
   .state('menu-fornecedor.veiculos', {
     url: '/veiculos',
     views: {
@@ -56,12 +66,6 @@ angular
         controller: 'ChangePassCtrl'
       }
     }
-  })
-
-  .state('pagina-inicial', {
-    url: '/pagina-inicial',
-    templateUrl: 'templates/home-fornecedor.html',
-    controller: 'HomeFornecedorCtrl'
   })
 
   $urlRouterProvider.otherwise('/login');
