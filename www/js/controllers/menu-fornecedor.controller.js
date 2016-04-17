@@ -12,9 +12,10 @@ angular
       if (res) {
         SessionService.clear();
         $state.go('login');
-      } else {
-        $ionicSideMenuDelegate.toggleLeft();
       }
+
+      if ($ionicSideMenuDelegate.isOpen())
+        $ionicSideMenuDelegate.toggleLeft();
     });
   }
 })
