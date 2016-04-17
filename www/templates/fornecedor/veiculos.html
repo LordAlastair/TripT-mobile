@@ -8,12 +8,24 @@
   </ion-nav-buttons>
 
   <ion-content overflow-scroll="true">
-    <form class="list card">
-      <label class="item item-input">
-        <i class="icon ion-search placeholder-icon"></i>
-        <input ng-model="filtro" type="search">
-      </label>
+    <form class="list">
+      <div class="item item-input-inset">
+        <label class="item-input-wrapper">
+          <i class="icon ion-search placeholder-icon"></i>
+          <input type="search" ng-model="filtro">
+        </label>
+      </div>
     </form>
+
+    <nav
+      mfb-menu
+      position="br"
+      effect="zoomin"
+      active-icon="ion-close"
+      resting-icon="ion-plus-round"
+      toggling-method="click">
+      <button mfb-button icon="ion-plus-round" label="Adicionar Veículo"></button>
+    </nav>
 
     <ion-list
       type="card"
