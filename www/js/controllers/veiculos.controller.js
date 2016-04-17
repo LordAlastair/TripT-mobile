@@ -1,9 +1,9 @@
 angular
 .module('app.controllers')
 .controller('VeiculosCtrl', function($scope, $ionicLoading, Veiculo) {
-  $scope.showDelete = false;
-  $scope.loading = false;
   $scope.filtro = '';
+  $scope.loading = false;
+  $scope.showDelete = false;
 
   $scope.toggleDelete = toggleDelete;
 
@@ -14,15 +14,19 @@ angular
   }
 
   function _getVeiculos() {
-    $scope.loading = true;
+    _toggleLoading();
 
     Veiculo.query(function (veiculos) {
-      $scope.loading = false;
       $scope.veiculos = veiculos;
+      _toggleLoading();
     });
   }
 
   function toggleDelete() {
     $scope.showDelete = !$scope.showDelete;
+  }
+
+  function _toggleLoading() {
+    $scope.loading = !$scope.loading;
   }
 })
