@@ -31,7 +31,7 @@ angular
     });
 
     $scope.$on('$destroy', function() {
-      $scope.modal.remove();
+      $scope.addVeiculoModal.remove();
     });
 
     $scope.$on('modal.hidden', function() {
