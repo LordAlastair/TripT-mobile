@@ -12,6 +12,8 @@ angular
 
   $scope.toggleDelete = toggleDelete;
   $scope.saveVeiculo = saveVeiculo;
+  $scope.removeVeiculo = removeVeiculo;
+  $scope.refresh = refresh;
 
   _init();
 
@@ -36,6 +38,32 @@ angular
 
     $scope.$on('modal.hidden', function() {
       $scope.veiculo = new Veiculo();
+    });
+  }
+
+  function refresh($event) {
+    Veiculo.query(function (veiculos) {
+      $scope.veiculos = veiculos;
+      $scope.$broadcast('scroll.refreshComplete');
+    });
+  }
+
+  function removeVeiculo(veiculo, $index) {
+    console.log(veiculo, $index);
+    $ionicPopup.confirm({
+      title: 'Remover Veículo',
+      template: 'Tem certeza?'
+    })
+    .then(function(res) {
+      if (res) {
+        Veiculo
+        .delete(veiculo)
+        .$promise
+        .then(function(res) {
+          console.log(res);
+          $scope.veiculos.splice($index, 1);
+        });
+      }
     });
   }
 
