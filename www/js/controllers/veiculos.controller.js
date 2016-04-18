@@ -2,6 +2,10 @@ angular
 .module('app.controllers')
 .controller('VeiculosCtrl', function($scope, $ionicLoading, $ionicModal, $ionicPopup, Veiculo) {
   $scope.veiculo = new Veiculo();
+  $scope.veiculos = [];
+
+  $scope.addVeiculoModal = null;
+
   $scope.filtro = '';
   $scope.loading = false;
   $scope.showDelete = false;
@@ -39,10 +43,20 @@ angular
     Veiculo
     .save($scope.veiculo)
     .$promise
-    .then(function(response) {
-      console.log(response);
-    })
+    .then(_saveVeiculoSuccess)
     .catch(_error)
+  }
+
+  function _saveVeiculoSuccess(veiculo) {
+    $ionicPopup.alert({
+      title: 'Cadastro Veículo',
+      template: 'Veículo cadastrado com sucesso!'
+    })
+    .then(function() {
+      $scope.addVeiculoModal.hide();
+    })
+
+    $scope.veiculos.push(veiculo);
   }
 
   function _getVeiculos() {
