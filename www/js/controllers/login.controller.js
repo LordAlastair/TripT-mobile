@@ -1,8 +1,6 @@
 angular
 .module('app.controllers')
 .controller('LoginCtrl', function($scope, $state, $ionicLoading, $ionicPopup, UsuarioService, SessionService) {
-  _init();
-
   $scope.usuario = {};
 
   $scope.login = function() {
@@ -14,12 +12,6 @@ angular
     .catch(_error)
     .finally(_finally);
   };
-
-  function _init() {
-    if (SessionService.hasToken()) {
-      $state.go("menu-fornecedor.home");
-    }
-  }
 
   function _success(response) {
     SessionService.setToken(response.data.token);

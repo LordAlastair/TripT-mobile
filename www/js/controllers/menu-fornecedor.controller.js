@@ -11,7 +11,7 @@ angular
     .then(function(res) {
       if (res) {
         SessionService.clear();
-        $state.go('login');
+        $state.go('home');
       }
 
       if ($ionicSideMenuDelegate.isOpen())
