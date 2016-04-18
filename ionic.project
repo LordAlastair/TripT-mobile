@@ -1,6 +1,6 @@
 {
   "name": "vali-mobile-2",
-  "app_id": "",
+  "app_id": "d37527cc",
   "gulpStartupTasks": [
     "sass",
     "watch"

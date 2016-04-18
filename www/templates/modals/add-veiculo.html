@@ -1,0 +1,43 @@
+<ion-modal-view>
+  <ion-header-bar class="bar-positive">
+    <h1 class="title">Adicionar Veículo</h1>
+    <div class="button button-clear" ng-click="addVeiculoModal.hide()">
+      <span class="icon ion-ios-close-empty"></span>
+    </div>
+  </ion-header-bar>
+
+  <ion-content padding="true" style="padding: 10px">
+    <ion-list>
+      <label class="item item-input">
+        <span class="input-label">Modelo</span>
+        <input ng-focus="true" type="text" ng-model="veiculo.vei_ds_modelo" required>
+      </label>
+
+      <label class="item item-input">
+        <span class="input-label">Placa do Veículo</span>
+        <input type="text" ng-model="veiculo.vei_ds_placa" required>
+      </label>
+
+      <label class="item item-input">
+        <span class="input-label">DER</span>
+        <input type="text" ng-model="veiculo.vei_ds_der" required>
+      </label>
+
+      <label class="item item-input">
+        <span class="input-label">Quantidade de Vagas</span>
+        <input type="number" ng-model="veiculo.vei_qt_vagas" required>
+      </label>
+
+      <label class="item item-input">
+        <span class="input-label">Cor do Veículo</span>
+        <input type="color" ng-model="veiculo.vei_ds_cor" required>
+      </label>
+    </ion-list>
+
+    <a
+      ng-click="saveVeiculo()"
+      class="button button-positive button-block button-outline">
+      Cadastrar Veículo
+    </a>
+  </ion-content>
+</ion-modal-view>

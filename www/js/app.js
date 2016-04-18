@@ -1,15 +1,16 @@
 angular
-.module('app', ['ionic', 'angular-jwt', 'app.controllers', 'app.routes', 'app.services'])
+.module('app', ['ionic', 'angular-jwt', 'ng-mfb', 'app.controllers', 'app.routes', 'app.services', 'app.interceptors'])
 .config(function($httpProvider) {
-  $httpProvider.interceptors.push('SessionService');
+  $httpProvider.interceptors.push('ErrorInterceptor');
+  $httpProvider.interceptors.push('SessionInterceptor');
 })
-.run( function($ionicPlatform) {
+.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
-    if(window.cordova && window.cordova.plugins.Keyboard) {
+    if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
     }
 
-    if(window.StatusBar) {
+    if (window.StatusBar) {
       StatusBar.styleDefault();
     }
   });

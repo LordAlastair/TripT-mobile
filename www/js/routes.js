@@ -6,8 +6,14 @@ angular
   .state('menu-fornecedor', {
     abstract: true,
     url: '/menu-fornecedor',
-    templateUrl: 'templates/menu-fornecedor.html',
+    templateUrl: 'templates/fornecedor/menu.html',
     controller: 'MenuFornecedorCtrl'
+  })
+
+  .state('home', {
+    url: '/home',
+    templateUrl: 'templates/home.html',
+    controller: 'HomeCtrl'
   })
 
   .state('login', {
@@ -32,7 +38,7 @@ angular
     url: '/home-fornecedor',
     views: {
       'navigationView': {
-        templateUrl: 'templates/home-fornecedor.html',
+        templateUrl: 'templates/fornecedor/home.html',
         controller: 'HomeFornecedorCtrl'
       }
     }
@@ -42,7 +48,7 @@ angular
     url: '/veiculos',
     views: {
       'navigationView': {
-        templateUrl: 'templates/veiculos.html',
+        templateUrl: 'templates/fornecedor/veiculos.html',
         controller: 'VeiculosCtrl'
       }
     }
@@ -52,7 +58,7 @@ angular
     url: '/veiculo/:vei_cd_veiculo',
     views: {
       'navigationView': {
-        templateUrl: 'templates/veiculo.html',
+        templateUrl: 'templates/fornecedor/veiculo.html',
         controller: 'VeiculoCtrl'
       }
     }
@@ -62,11 +68,11 @@ angular
     url: '/changePass',
     views: {
       'navigationView': {
-        templateUrl: 'templates/change-pass.html',
+        templateUrl: 'templates/generic/change-pass.html',
         controller: 'ChangePassCtrl'
       }
     }
   })
 
-  $urlRouterProvider.otherwise('/login');
+  $urlRouterProvider.otherwise('/home');
 });

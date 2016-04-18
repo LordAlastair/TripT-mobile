@@ -19,7 +19,11 @@ $dark:                            #444 !default;
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Sobrescrevendo cor default das classes que usam "positive" para usar a cor da logo do Tript
-$positive: #3D4D9A !default;
+$main-color: #3D4D9A !default;
+$positive: $main-color !default;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
+
+// Importa Material Floating Button
+@import "www/lib/ng-material-floating-button/mfb/src/mfb";
