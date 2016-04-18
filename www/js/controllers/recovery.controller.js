@@ -17,11 +17,12 @@ angular
     $ionicPopup.alert({
       title: 'Recovery',
       template: 'Sua nova senha foi enviada para seu email.'
+    })
+    .then(function() {
+      $state.go('login');
     });
 
     $scope.usuario = {};
-
-    $state.go('login');
   }
 
   function _error(response) {

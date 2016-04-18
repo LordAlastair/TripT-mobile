@@ -14,12 +14,11 @@ angular
   };
 
   function _success(data) {
-    var alert = $ionicPopup.alert({
+    $ionicPopup.alert({
      title: 'Yay!',
      template: 'Usuário criado!'
-    });
-
-    alert.then(function() {
+    })
+    .then(function() {
       $state.go('login');
     });
   }
