@@ -1,6 +1,8 @@
 angular
 .module('app', ['ionic', 'angular-jwt', 'ng-mfb', 'app.controllers', 'app.routes', 'app.services', 'app.interceptors'])
-.config(function($httpProvider) {
+.config(function($ionicConfigProvider, $httpProvider) {
+  $ionicConfigProvider.spinner.icon("ripple");
+  
   $httpProvider.interceptors.push('ErrorInterceptor');
   $httpProvider.interceptors.push('SessionInterceptor');
 })

@@ -41,7 +41,7 @@ angular
     });
   }
 
-  function refresh($event) {
+  function refresh() {
     Veiculo.query(function (veiculos) {
       $scope.veiculos = veiculos;
       $scope.$broadcast('scroll.refreshComplete');
