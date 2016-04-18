@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "angular-resource": "^1.5.2",
-    "angular-jwt": "^0.0.9"
+    "angular-jwt": "^0.0.9",
+    "ng-material-floating-button": "ng-mfb#^0.6.2"
   }
 }

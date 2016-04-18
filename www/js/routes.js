@@ -10,6 +10,12 @@ angular
     controller: 'MenuFornecedorCtrl'
   })
 
+  .state('home', {
+    url: '/home',
+    templateUrl: 'templates/home.html',
+    controller: 'HomeCtrl'
+  })
+
   .state('login', {
     url: '/login',
     templateUrl: 'templates/login.html',
@@ -68,5 +74,5 @@ angular
     }
   })
 
-  $urlRouterProvider.otherwise('/login');
+  $urlRouterProvider.otherwise('/home');
 });

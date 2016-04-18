@@ -1,7 +1,8 @@
 angular
-.module('app', ['ionic', 'angular-jwt', 'ng-mfb', 'app.controllers', 'app.routes', 'app.services'])
+.module('app', ['ionic', 'angular-jwt', 'ng-mfb', 'app.controllers', 'app.routes', 'app.services', 'app.interceptors'])
 .config(function($httpProvider) {
-  $httpProvider.interceptors.push('SessionService');
+  $httpProvider.interceptors.push('ErrorInterceptor');
+  $httpProvider.interceptors.push('SessionInterceptor');
 })
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

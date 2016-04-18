@@ -15,18 +15,5 @@ angular
     return jwtHelper.decodeToken(SessionService.getToken());
   };
 
-  /**
-   * Método que faz desse objeto um Interceptor $http.
-   *
-   * @param config Objeto de configuracao do $http
-   */
-  SessionService.request = function(config) {
-    if (SessionService.hasToken()) {
-      config.headers.Authorization = SessionService.getToken();
-    }
-
-    return config;
-  };
-
   return SessionService;
 });

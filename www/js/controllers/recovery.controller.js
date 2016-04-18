@@ -24,20 +24,14 @@ angular
     $state.go('login');
   }
 
-  function _error(err) {
+  function _error(response) {
     $ionicPopup.alert({
       title: 'Vish, deu ruim',
-      template: _getErrors(err)
+      template: response.errorMessage
     });
   }
 
   function _finally() {
     $ionicLoading.hide();
-  }
-
-  function _getErrors(err) {
-    return err.data.map(function(error) {
-      return error.msg;
-    }).join("<br>");
   }
 })
