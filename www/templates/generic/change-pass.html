@@ -1,6 +1,6 @@
 <ion-view title="Alterar senha">
   <ion-content overflow-scroll="true" padding="true" scroll="false" class="has-header">
-    <ion-list>
+    <form class="responsive-form">
       <label class="item item-input" name="senha">
         <span class="input-label">Senha</span>
         <input type="password" ng-model="usuario.usu_ds_senha" required>
@@ -15,12 +15,12 @@
         <span class="input-label">Confirmar senha</span>
         <input type="password" ng-model="usuario.usu_ds_nova_senha_confirm" required>
       </label>
-    </ion-list>
 
-    <button
-      ng-click="changePass()"
-      class="button button-outline button-positive button-block">
-      Trocar senha
-    </button>
+      <button
+        ng-click="changePass()"
+        class="button button-outline button-positive button-block">
+        Trocar senha
+      </button>
+    </form>
   </ion-content>
 </ion-view>

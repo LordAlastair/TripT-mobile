@@ -1,0 +1,12 @@
+.veiculo-form {
+  &__label {
+    &:after {
+      content: ": ";
+    }
+  }
+  &__field {
+    &:disabled {
+      background: #fff;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+.logo {
+  @include mobile-xs {
+    width: 40%;
+  }
+
+  @include desktop {
+    max-width: 250px;
+  }
+}

@@ -1,12 +1,50 @@
 <ion-view title="Veículo">
-  <ion-content>
-    <h1> {{ veiculo.vei_ds_modelo }} - {{ veiculo.vei_ds_placa }}</h1>
+  <ion-header-bar class="bar-positive">
+    <h1 class="title">Adicionar Veículo</h1>
+    <div class="button button-clear" ng-click="addVeiculoModal.hide()">
+      <span class="icon ion-ios-close-empty"></span>
+    </div>
+  </ion-header-bar>
 
-    <h2>Caracteristicas: </h2>
-    <ion-list type="card">
-      <ion-item ng-repeat="caracteristica in caracteristicas">
-        {{ caracteristica.car_ds_caracteristica }}
-      </ion-item>
-    </ion-list>
+  <ion-content style="padding: 10px">
+    <form class="veiculo-form">
+      <ion-list type="card">
+        <label class="item item-input">
+          <span class="veiculo-form__label input-label">Modelo</span>
+          <input class="veiculo-form__field" type="text" ng-disabled="!onEditMode" ng-model="veiculo.vei_ds_modelo" required>
+        </label>
+
+        <label class="item item-input">
+          <span class="veiculo-form__label input-label">Placa do Veículo</span>
+          <input class="veiculo-form__field" type="text" ng-disabled="!onEditMode" ng-model="veiculo.vei_ds_placa" required>
+        </label>
+
+        <label class="item item-input">
+          <span class="veiculo-form__label input-label">DER</span>
+          <input class="veiculo-form__field" type="text" ng-disabled="!onEditMode" ng-model="veiculo.vei_ds_der" required>
+        </label>
+
+        <label class="item item-input">
+          <span class="veiculo-form__label input-label">Quantidade de Vagas</span>
+          <input class="veiculo-form__field" type="number" ng-disabled="!onEditMode" ng-model="veiculo.vei_qt_vagas" required>
+        </label>
+      </ion-list>
+
+      <ion-list type="card">
+        <ion-checkbox
+          disabled="true"
+          ng-value="item.car_cd_caracteristica"
+          ng-repeat="item in caracteristicas track by $index"
+          ng-checked="findInSelected($index)">
+          {{ item.car_ds_caracteristica }}
+        </ion-checkbox>
+      </ion-list>
+
+      <a
+        ng-click="toggleEditMode()"
+        class="button button-positive button-block button-outline">
+        Alterar Veículo
+      </a>
+    </form>
   </ion-content>
 </ion-view>
