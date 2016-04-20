@@ -1,8 +1,9 @@
 angular
 .module('app.controllers')
-.controller('VeiculosCtrl', function($scope, $ionicLoading, $ionicModal, $ionicPopup, Veiculo) {
+.controller('VeiculosCtrl', function($scope, $ionicLoading, $ionicModal, $ionicPopup, Veiculo, Caracteristica) {
   $scope.veiculo = new Veiculo();
   $scope.veiculos = [];
+  $scope.caracteristicas = [];
 
   $scope.addVeiculoModal = null;
 
@@ -19,6 +20,7 @@ angular
 
   function _init() {
     _getVeiculos();
+    _getCaracteristicas();
     _setupAddVeiculoModal();
   }
 
@@ -42,14 +44,17 @@ angular
   }
 
   function refresh() {
-    Veiculo.query(function (veiculos) {
+    Veiculo
+    .query()
+    .$promise
+    .then(function (veiculos) {
       $scope.veiculos = veiculos;
       $scope.$broadcast('scroll.refreshComplete');
-    });
+    })
+    .catch(_error);
   }
 
   function removeVeiculo(veiculo, $index) {
-    console.log(veiculo, $index);
     $ionicPopup.confirm({
       title: 'Remover Veículo',
       template: 'Tem certeza?'
@@ -62,7 +67,8 @@ angular
         .then(function(res) {
           console.log(res);
           $scope.veiculos.splice($index, 1);
-        });
+        })
+        .catch(_error);
       }
     });
   }
@@ -90,9 +96,19 @@ angular
   function _getVeiculos() {
     _toggleLoading();
 
-    Veiculo.query(function (veiculos) {
+    Veiculo
+    .query()
+    .$promise
+    .then(function (veiculos) {
       $scope.veiculos = veiculos;
       _toggleLoading();
+    })
+    .catch(_error);
+  }
+
+  function _getCaracteristicas() {
+    Caracteristica.query(function (caracteristicas) {
+      $scope.caracteristicas = caracteristicas;
     });
   }
 

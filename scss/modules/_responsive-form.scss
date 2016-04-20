@@ -1,0 +1,26 @@
+@mixin resize-form() {
+  @include center-block();
+  max-width: 40%;
+}
+
+.responsive-form {
+  @include mobile-sm {
+    @include resize-form();
+  }
+
+  @include tablet {
+    @include resize-form();
+  }
+
+  @include desktop {
+    @include resize-form();
+  }
+
+  &__email {
+
+  }
+
+  &__password {
+
+  }
+}

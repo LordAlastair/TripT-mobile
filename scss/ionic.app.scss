@@ -25,5 +25,9 @@ $positive: $main-color !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
-// Importa Material Floating Button
+// Importa Material Floating Button: ;
 @import "www/lib/ng-material-floating-button/mfb/src/mfb";
+
+@import "partials/all";
+@import "mixins/all";
+@import "modules/all";

@@ -5,7 +5,7 @@ angular
 
   ErrorInterceptor.responseError = function(response) {
     response.errors = [];
-
+    console.log(response);
     switch (response.status) {
       case 0:
         response.errors.push("Não foi possível entrar em contato com o servidor.");
