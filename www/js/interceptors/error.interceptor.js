@@ -34,8 +34,8 @@ angular
   };
 
   function _onExpired() {
-    $ionicPopup = $injector.get("$ionicPopup");
     $state = $injector.get("$state");
+    $ionicPopup = $injector.get("$ionicPopup");
     SessionService = $injector.get("SessionService");
 
     $ionicPopup
