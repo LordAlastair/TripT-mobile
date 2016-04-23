@@ -29,7 +29,7 @@ angular
       template: 'Sua conta foi excluída.'
     });
 
-    $scope.usuario = {};
+    SessionService.clear();
     $state.go('home');
   }
 
