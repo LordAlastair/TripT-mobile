@@ -1,0 +1,9 @@
+.container {
+  @include tablet {
+    padding: 4em;
+  }
+
+  @include desktop {
+    padding: 8em;
+  }
+}

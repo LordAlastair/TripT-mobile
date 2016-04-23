@@ -3,11 +3,17 @@ angular
 .config(function ($stateProvider, $urlRouterProvider) {
 
   $stateProvider
-  .state('menu-fornecedores', {
-    abstract:true,
-    url: '/menu-fornecedores',
-    templateUrl: 'templates/menu-fornecedores.html',
-    controller: 'MenuFornecedoresCtrl'
+  .state('menu-fornecedor', {
+    abstract: true,
+    url: '/menu-fornecedor',
+    templateUrl: 'templates/fornecedor/menu.html',
+    controller: 'MenuFornecedorCtrl'
+  })
+
+  .state('home', {
+    url: '/home',
+    templateUrl: 'templates/home.html',
+    controller: 'HomeCtrl'
   })
 
   .state('login', {
@@ -22,30 +28,60 @@ angular
     controller: 'SignupCtrl'
   })
 
-  .state('menu-fornecedores.veiculos', {
+  .state('recovery', {
+    url: '/recovery',
+    templateUrl: 'templates/recovery.html',
+    controller: 'RecoveryCtrl'
+  })
+
+  .state('menu-fornecedor.home', {
+    url: '/home-fornecedor',
+    views: {
+      'navigationView': {
+        templateUrl: 'templates/fornecedor/home.html',
+        controller: 'HomeFornecedorCtrl'
+      }
+    }
+  })
+
+  .state('menu-fornecedor.veiculos', {
     url: '/veiculos',
     views: {
       'navigationView': {
-        templateUrl: 'templates/veiculos.html',
+        templateUrl: 'templates/fornecedor/veiculos.html',
         controller: 'VeiculosCtrl'
       }
     }
   })
 
-  .state('menu-fornecedores.veiculo', {
+  .state('menu-fornecedor.veiculo', {
     url: '/veiculo/:vei_cd_veiculo',
     views: {
       'navigationView': {
-        templateUrl: 'templates/veiculo.html',
+        templateUrl: 'templates/fornecedor/veiculo.html',
         controller: 'VeiculoCtrl'
       }
     }
   })
 
-  .state('recovery', {
-    url: '/recovery',
-    templateUrl: 'templates/recovery.html',
-    controller: 'RecoveryCtrl'
+  .state('menu-fornecedor.changePass', {
+    url: '/changePass',
+    views: {
+      'navigationView': {
+        templateUrl: 'templates/generic/change-pass.html',
+        controller: 'ChangePassCtrl'
+      }
+    }
+  })
+
+  .state('menu-fornecedor.configuracoes', {
+    url: '/usuario/',
+    views: {
+      'navigationView': {
+        templateUrl: 'templates/generic/configuracoes.html',
+        controller: 'ConfiguracoesCtrl'
+      }
+    }
   })
 
   .state('fornecedor', {
@@ -54,5 +90,5 @@ angular
     controller: 'FornecedorCtrl'
   })
 
-  $urlRouterProvider.otherwise('/login')
+  $urlRouterProvider.otherwise('/home');
 });

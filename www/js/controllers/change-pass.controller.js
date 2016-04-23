@@ -1,21 +1,25 @@
 angular
 .module('app.controllers')
-.controller('LoginCtrl', function($scope, $state, $ionicLoading, $ionicPopup, UsuarioService, SessionService) {
+.controller('ChangePassCtrl', function($scope, $state, $ionicLoading, $ionicPopup, SessionService, UsuarioService) {
   $scope.usuario = {};
 
-  $scope.login = function() {
+  $scope.changePass = function() {
     $ionicLoading.show();
 
     UsuarioService
-    .authenticate($scope.usuario)
+    .changePass($scope.usuario)
     .then(_success)
     .catch(_error)
     .finally(_finally);
   };
 
   function _success(response) {
-    SessionService.setToken(response.data.token);
-    $state.go('menu-fornecedor.home');
+    $ionicPopup.alert({
+      title: 'Sucesso!',
+      template: 'Sua senha foi alterada com sucesso.'
+    });
+
+    $scope.usuario = {};
   }
 
   function _error(response) {
@@ -28,4 +32,4 @@ angular
   function _finally() {
     $ionicLoading.hide();
   }
-});
+})

@@ -1,10 +1,23 @@
 angular
 .module('app.controllers')
 .controller('VeiculoCtrl', function($scope, $stateParams, Veiculo, Caracteristica) {
+  $scope.onEditMode = false;
+  $scope.veiculo = null;
+  $scope.caracteristicas = [];
+  $scope.selectedCaracteristicas = [];
+
+  $scope.findInSelected = function(value) {
+    return $scope.selectedCaracteristicas.indexOf(value) >= 0;
+  };
+
   _init();
 
   function _init() {
     _getVeiculo($stateParams.vei_cd_veiculo);
+  }
+
+  function toggleEditMode() {
+    $scope.onEditMode = !$scope.onEditMode;
   }
 
   function _getVeiculo(vei_cd_veiculo, cb) {
@@ -26,9 +39,8 @@ angular
 
   function _getCaracteristicas() {
     Caracteristica.query(function(caracteristicas) {
-      $scope.caracteristicas = caracteristicas.filter(function(caracteristica) {
-        return $scope.selectedCaracteristicas.indexOf(caracteristica.car_cd_caracteristica) >= 0;
-      });
+      $scope.caracteristicas = caracteristicas;
+      console.log(caracteristicas);
     });
   }
 })

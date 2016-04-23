@@ -14,27 +14,20 @@ angular
   };
 
   function _success(data) {
-    var alert = $ionicPopup.alert({
-     title: 'Yey!',
+    $ionicPopup.alert({
+     title: 'Yay!',
      template: 'Usuário criado!'
-    });
-
-    alert.then(function() {
+    })
+    .then(function() {
       $state.go('login');
     });
   }
 
-  function _error(err) {
+  function _error(response) {
     $ionicPopup.alert({
       title: 'Vish, deu ruim..',
-      template: _getErrors(err)
+      template: response.errorMessage
     });
-  }
-
-  function _getErrors(err) {
-    return err.data.map(function(error) {
-      return error.msg;
-    }).join("<br>");
   }
 
   function _finally() {

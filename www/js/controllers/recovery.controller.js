@@ -1,6 +1,6 @@
 angular
 .module('app.controllers')
-.controller('RecoveryCtrl', function($scope, $state, $ionicLoading,  $ionicPopup, UsuarioService) {
+.controller('RecoveryCtrl', function($scope, $state, $ionicLoading, $ionicPopup, UsuarioService) {
   $scope.usuario = {};
 
   $scope.recovery = function() {
@@ -17,25 +17,22 @@ angular
     $ionicPopup.alert({
       title: 'Recovery',
       template: 'Sua nova senha foi enviada para seu email.'
+    })
+    .then(function() {
+      $state.go('login');
     });
+
     $scope.usuario = {};
-    $state.go('login');
   }
 
-  function _error(err) {
+  function _error(response) {
     $ionicPopup.alert({
-      title: 'Vish, deu ruim..',
-      template: _getErrors(err)
+      title: 'Vish, deu ruim',
+      template: response.errorMessage
     });
   }
 
   function _finally() {
     $ionicLoading.hide();
-  }
-
-  function _getErrors(err) {
-    return err.data.map(function(error) {
-      return error.msg;
-    }).join("<br>");
   }
 })
