@@ -74,5 +74,15 @@ angular
     }
   })
 
+  .state('menu-fornecedor.configuracoes', {
+    url: '/usuario/',
+    views: {
+      'navigationView': {
+        templateUrl: 'templates/generic/configuracoes.html',
+        controller: 'ConfiguracoesCtrl'
+      }
+    }
+  })
+
   $urlRouterProvider.otherwise('/home');
 });
