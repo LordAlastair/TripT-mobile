@@ -48,5 +48,11 @@ angular
     controller: 'RecoveryCtrl'
   })
 
+  .state('fornecedor', {
+    url: '/fornecedor',
+    templateUrl: 'templates/fornecedor.html',
+    controller: 'FornecedorCtrl'
+  })
+
   $urlRouterProvider.otherwise('/login')
 });
