@@ -1,7 +1,7 @@
 angular
 .module('app.controllers')
 .controller('ChangePassCtrl', function($scope, $state, $ionicLoading, $ionicPopup, SessionService, UsuarioService) {
-  $scope.usuario = SessionService.getUserData();
+  $scope.usuario = {};
 
   $scope.changePass = function() {
     $ionicLoading.show();

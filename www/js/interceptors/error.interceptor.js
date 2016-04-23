@@ -4,38 +4,48 @@ angular
   var ErrorInterceptor = {};
 
   ErrorInterceptor.responseError = function(response) {
-    response.errors = [];
-    console.log(response);
-    switch (response.status) {
-      case 0:
-        response.errors.push("Não foi possível entrar em contato com o servidor.");
-        break;
+    var errorObject = _getErrorObject(response);
 
-      case 401:
-        _onExpired();
-        break;
-
-      case 500:
-        response.errors.push("Parece que tem algum problema servidor..");
-        break;
-    }
-
-    if (response.status > 299 && response.status < 500) {
-      response.errors = response.data.map(function(error) {
-        return error.msg;
-      });
-    }
-
-    if (response.errors.length) {
-      response.errorMessage = response.errors.join("<br>");
-    }
+    response.errors = errorObject.errors;
+    response.errorMessage = errorObject.errorMessage;
 
     return $q.reject(response);
   };
 
+  function _getErrorObject(response) {
+    var errorObject = {
+      errors: [],
+      errorMessage: null
+    };
+
+    switch (response.status) {
+      case 0:
+        errorObject.errors.push("Não foi possível entrar em contato com o servidor.");
+        break;
+
+      case 401:
+        _onExpired();
+        return;
+
+      case 500:
+        errorObject.errors.push("Parece que tem algum problema servidor..");
+        break;
+    }
+
+    if (response.status > 299 && response.status < 500) {
+      errorObject.errors = response.data.map(error => error.msg);
+    }
+
+    if (errorObject.errors.length) {
+      errorObject.errorMessage = errorObject.errors.join("<br>");
+    }
+
+    return errorObject;
+  }
+
   function _onExpired() {
-    $ionicPopup = $injector.get("$ionicPopup");
     $state = $injector.get("$state");
+    $ionicPopup = $injector.get("$ionicPopup");
     SessionService = $injector.get("SessionService");
 
     $ionicPopup
@@ -43,7 +53,7 @@ angular
       title: "Tript",
       template: "Sessão expirada. Faça login novamente."
     })
-    .then(function() {
+    .then(() => {
       SessionService.clear();
       $state.go('login');
     });
