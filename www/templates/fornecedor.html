@@ -11,29 +11,33 @@
         </select>
       </label>
 
-      <label class="item item-input">
-        <span class="input-label">E-mail</span>
-        <input type="email" ng-model="fornecedor.for_ds_email">
-      </label>
-      <label class="item item-input">
-        <span class="input-label">Celular</span>
-        <input type="text" ng-model="fornecedor.for_ds_celular">
-      </label>
-
       <label class="item item-input" ng-show="tipoPessoa(2)">
         <span class="input-label">Razão Social</span>
         <input type="text" ng-model="fornecedor.for_ds_razao_social">
       </label>
 
-      <label class="item item-input">
-        <span class="input-label" ng-show="tipoPessoa(2)">Nome fantasia</span>
-        <span class="input-label" ng-show="tipoPessoa(1)">Nome</span>
+      <label class="item item-input" ng-show="tipoPessoa(2)">
+        <span class="input-label">Nome fantasia</span>
+        <input type="text" ng-model="fornecedor.for_ds_fantasia_nome">
+      </label>
+
+      <label class="item item-input" ng-show="tipoPessoa(1)">
+        <span class="input-label">Nome</span>
         <input type="text" ng-model="fornecedor.for_ds_fantasia_nome">
       </label>
 
       <label class="item item-input">
-        <span class="input-label" ng-show="tipoPessoa(2)">CNPJ</span>
-        <span class="input-label" ng-show="tipoPessoa(1)">CPF</span>
+        <span class="input-label">Celular</span>
+        <input type="tel" ng-model="fornecedor.for_ds_celular">
+      </label>
+
+      <label class="item item-input" ng-show="tipoPessoa(2)">
+        <span class="input-label">CNPJ</span>
+        <input type="text" ng-model="fornecedor.for_ds_cnpj_cpf">
+      </label>
+
+      <label class="item item-input" ng-show="tipoPessoa(1)">
+        <span class="input-label">CPF</span>
         <input type="text" ng-model="fornecedor.for_ds_cnpj_cpf">
       </label>
 
