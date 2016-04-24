@@ -5,6 +5,7 @@ angular
   $scope.fornecedor = {};
   $scope.save = _save;
   $scope.tipoPessoa = _tipoPessoa;
+  $scope.tipoTransporte = _tipoTransporte;
 
   _init();
 
@@ -14,6 +15,10 @@ angular
 
    function _tipoPessoa(tp){
      return $scope.fornecedor.for_fl_pessoa == tp;
+   }
+
+   function _tipoTransporte(tp){
+     return $scope.fornecedor.for_cd_transporte == tp;
    }
 
    function _getFornecedor(){

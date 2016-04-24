@@ -11,12 +11,22 @@
         </select>
       </label>
     </div>
+
     <div class="list card">
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Tipo de Transporte
+        </div>
+        <select ng-model="fornecedor.for_cd_transporte" >
+          <option value="1" ng-selected="tipoTransporte(1)">Escolar</option>
+          <option value="2" ng-selected="tipoTransporte(2)">Viagem</option>
+          <option value="3" ng-selected="tipoTransporte(3)">Escolar e Viagem</option>
+        </select>
+      </label>
+    </div>
 
-
-
+    <div class="list card">
       <div class="item item-input" ng-show="tipoPessoa(2)">
-
         <label class="item-floating-label"  style="float:left; width:50%">
           <span class="input-label">Nome fantasia</span>
           <input type="text" ng-model="fornecedor.for_ds_fantasia_nome" placeholder="Nome Fantasia">
