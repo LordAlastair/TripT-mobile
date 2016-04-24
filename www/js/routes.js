@@ -94,5 +94,15 @@ angular
     }
   })
 
+  .state('menu-fornecedor.plano', {
+  url: '/fornecedor-plano',
+  views: {
+    'navigationView': {
+      templateUrl: 'templates/fornecedor/fornecedor-plano.html',
+      controller: 'FornecedorPlanoCtrl'
+    }
+  }
+})
+
   $urlRouterProvider.otherwise('/home');
 });
