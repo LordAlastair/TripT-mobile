@@ -1,21 +1,35 @@
 angular
 .module('app.controllers')
-.controller('ClienteCtrl', function($scope, ClienteService, $ionicPopup, $ionicLoading) {
+.controller('ClienteCtrl', function($scope, ClienteService, InstituicaoService, $ionicPopup, $ionicLoading) {
 
   $scope.cliente = {};
+  $scope.instituicoes = {};
   $scope.save = _save;
+  $scope.marcaItem = _marcaItem;
 
   _init();
 
    function _init(){
     _getCliente();
+    _getInstituicoes();
+   }
+
+   function _getInstituicoes(){
+     InstituicaoService
+      .all()
+      .then(function(res){
+        $scope.instituicoes = res.data;
+      });
+   }
+
+   function _marcaItem(item){
+     return $scope.cliente.cli_cd_instituicao == item;
    }
 
    function _getCliente(){
       ClienteService
         .load($scope.cliente)
         .then(function(res){
-          console.log(res.data);
           $scope.cliente = res.data;
         });
   }

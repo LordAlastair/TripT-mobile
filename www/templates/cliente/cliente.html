@@ -5,8 +5,9 @@
         <div class="input-label">
           Instituição de Ensino
         </div>
+
         <select ng-model="cliente.cli_cd_instituicao" >
-          <option value="1" ng-selected="1">UVV</option>
+          <option value="{{ ins.ins_cd_instituicao }}" ng-selected="marcaItem(ins.ins_cd_instituicao)" ng-repeat="ins in instituicoes">{{ ins.ins_ds_instituicao }}</option>
         </select>
       </label>
     </div>
