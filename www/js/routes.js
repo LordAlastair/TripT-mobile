@@ -10,6 +10,13 @@ angular
     controller: 'MenuFornecedorCtrl'
   })
 
+  .state('menu-cliente', {
+    abstract: true,
+    url: '/menu-cliente',
+    templateUrl: 'templates/cliente/menu.html',
+    controller: 'MenuClienteCtrl'
+  })
+
   .state('home', {
     url: '/home',
     templateUrl: 'templates/home.html',
@@ -88,11 +95,12 @@ angular
     url: '/fornecedor',
     views: {
       'navigationView': {
-        templateUrl: 'templates/fornecedor.html',
+        templateUrl: 'templates/fornecedor/fornecedor.html',
         controller: 'FornecedorCtrl'
       }
     }
   })
+
 
   .state('menu-fornecedor.plano', {
   url: '/fornecedor-plano',
@@ -103,6 +111,47 @@ angular
     }
   }
 })
+
+  .state('menu-cliente.home', {
+    url: '/home-cliente',
+    views: {
+      'navigationView': {
+        templateUrl: 'templates/cliente/home.html',
+        controller: 'HomeClienteCtrl'
+      }
+    }
+  })
+
+  .state('menu-cliente.configuracoes', {
+    url: '/usuario/',
+    views: {
+      'navigationView': {
+        templateUrl: 'templates/generic/configuracoes.html',
+        controller: 'ConfiguracoesCtrl'
+      }
+    }
+  })
+
+  .state('menu-cliente.changePass', {
+    url: '/changePass',
+    views: {
+      'navigationView': {
+        templateUrl: 'templates/generic/change-pass.html',
+        controller: 'ChangePassCtrl'
+      }
+    }
+  })
+
+  .state('menu-cliente.meu-cadastro', {
+      url: '/meu-cadastro',
+      views: {
+        'navigationView': {
+          templateUrl: 'templates/cliente/cliente.html',
+          controller: 'ClienteCtrl'
+        }
+    }
+  })
+
 
   $urlRouterProvider.otherwise('/home');
 });

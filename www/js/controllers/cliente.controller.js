@@ -1,38 +1,42 @@
 angular
 .module('app.controllers')
-.controller('FornecedorCtrl', function($scope, FornecedorService, $ionicPopup, $ionicLoading) {
+.controller('ClienteCtrl', function($scope, ClienteService, InstituicaoService, $ionicPopup, $ionicLoading) {
 
-  $scope.fornecedor = {};
+  $scope.cliente = {};
+  $scope.instituicoes = {};
   $scope.save = _save;
-  $scope.tipoPessoa = _tipoPessoa;
-  $scope.tipoTransporte = _tipoTransporte;
+  $scope.marcaItem = _marcaItem;
 
   _init();
 
    function _init(){
-    _getFornecedor();
+    _getCliente();
+    _getInstituicoes();
    }
 
-   function _tipoPessoa(tp){
-     return $scope.fornecedor.for_fl_pessoa == tp;
+   function _getInstituicoes(){
+     InstituicaoService
+      .all()
+      .then(function(res){
+        $scope.instituicoes = res.data;
+      });
    }
 
-   function _tipoTransporte(tp){
-     return $scope.fornecedor.for_cd_transporte == tp;
+   function _marcaItem(item){
+     return $scope.cliente.cli_cd_instituicao == item;
    }
 
-   function _getFornecedor(){
-      FornecedorService
-        .load($scope.fornecedor)
+   function _getCliente(){
+      ClienteService
+        .load($scope.cliente)
         .then(function(res){
-          console.log(res.data);
-          $scope.fornecedor = res.data;
+          $scope.cliente = res.data;
         });
   }
 
   function _save(){
-      FornecedorService
-        .update($scope.fornecedor)
+      ClienteService
+        .update($scope.cliente)
         .then(_success)
         .catch(_error)
         .finally(_finally);
