@@ -84,10 +84,14 @@ angular
     }
   })
 
-  .state('fornecedor', {
+  .state('menu-fornecedor.meu-cadastro', {
     url: '/fornecedor',
-    templateUrl: 'templates/fornecedor.html',
-    controller: 'FornecedorCtrl'
+    views: {
+      'navigationView': {
+        templateUrl: 'templates/fornecedor.html',
+        controller: 'FornecedorCtrl'
+      }
+    }
   })
 
   $urlRouterProvider.otherwise('/home');
