@@ -1,29 +1,18 @@
 angular
 .module('app.services')
-.factory('FornecedorPlanoService', function($http, BACKEND_URL) {
-  var FornecedorPlanoService = {
-    create: function (fornecedorPlano) {
-      return $http({
-        method: 'POST',
-        url: BACKEND_URL + '/fornecedor-plano',
-        data: fornecedorplano
-      });
-    },
-    update: function (fornecedorPlano) {
-      return $http({
-        method: 'PUT',
-        url: BACKEND_URL + '/fornecedor-plano/',
-        data: fornecedorplano
-      });
-    },
-    load: function(fornecedorPlano) {
-        return $http({
-          method: 'GET',
-          url: BACKEND_URL + '/fornecedor-plano/',
-          data: fornecedorplano
-        });
+.factory('FornecedorPlanoService',['$resource', 'BACKEND_URL', function($resource, BACKEND_URL) {
+  var methods = {
+    save: {
+      method: 'POST',
+      isArray: true
     }
   };
 
-  return FornecedorPlanoService;
-});
+  var key = {
+    fop_cd_fornecedor_plano: "@fop_cd_fornecedor_plano"
+  };
+
+  var url = BACKEND_URL + '/fornecedor-plano/:fop_cd_fornecedor_plano'
+
+  return $resource(url, key, methods);
+}]);

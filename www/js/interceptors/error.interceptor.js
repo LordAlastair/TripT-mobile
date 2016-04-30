@@ -23,6 +23,9 @@ angular
         errorObject.errors.push("Não foi possível entrar em contato com o servidor.");
         break;
 
+      case 200:
+        return;
+
       case 401:
         _onExpired();
         return;

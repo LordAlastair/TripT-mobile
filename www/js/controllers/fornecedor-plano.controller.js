@@ -1,33 +1,77 @@
 angular
 .module('app.controllers')
-.controller('FornecedorPlanoCtrl', function($scope, FornecedorPlanoService, PlanoService, $ionicPopup, $ionicLoading) {
-
-  $scope.fornecedorplano = {};
+.controller('FornecedorPlanoCtrl', function($scope, $state, FornecedorPlanoService, PlanoService, $ionicPopup, $ionicLoading, $interval) {
   $scope.planos = {};
 
+  _init();
+
+  function _init(){
+   _getPlanos();
+   _getFornecedorPlano();
+   _setStateEventInterceptor();
+  }
+
+  function _setStateEventInterceptor() {
+    $scope.$on("$stateChangeStart", function(e, toState, toParams, fromState, fromParams) {
+      if (!fromState.name)
+        return;
+
+      if (fromState.name == $state.current.name) {
+        _saveFornecedorPlano();
+      }
+    });
+  }
+
   function _getPlanos(){
-    PlanoService
-    .query()
-    .then(function(planos){
+    PlanoService.query(function(planos){
       $scope.planos = planos;
     });
   };
 
   function _getFornecedorPlano(){
-    FornecedorPlanoService
-    .load()
-    .then(function (res){
-      $scope.fornecedorplano = res.data;
-      console.log(res.data);
+    FornecedorPlanoService.query(function(fornecedorPlano){
+      var checkedPlanos = fornecedorPlano.map(fornecedorPlano => fornecedorPlano.fop_cd_plano);
+
+      $scope.planos = $scope.planos.map(plano => {
+        plano.checked = checkedPlanos.indexOf(plano.pla_cd_plano) !== -1;
+        return plano;
+      });
     });
   };
 
-  var $scope.checkedPlanos = fornecedorplano.map(fornecedoplano => fornecedorplano.fop_cd_plano);
-//var $scope.checkedPlanos = fornecedorplano.map(function(fornecedoplano){ return fornecedorPlano.fop_cd_plano;};);
-//fornecedorPlanos.forEach(function(fornecedorPlano) {
-//  checkedPlanos.push(fornecedorPlano.fop_cd_plano);
-//});
+  function _saveFornecedorPlano(){
+    var changes = {
+      checked: [],
+      unchecked: []
+    };
 
+    changes.checked =
+      $scope
+      .planos
+      .filter(plano => plano.checked)
+      .map(plano => {
+        return { fop_cd_plano: plano.pla_cd_plano };
+      });
 
+    changes.unchecked =
+      $scope
+      .planos
+      .filter(plano => !plano.checked)
+      .map(plano => {
+        return { fop_cd_plano: plano.pla_cd_plano };
+      });
 
+      FornecedorPlanoService
+      .save(changes)
+      .$promise
+      .then(result => console.log(result))
+      .catch(_error)
+  }
+
+  function _error(response) {
+    $ionicPopup.alert({
+      title: 'Vish, deu ruim..',
+      template: response.errorMessage
+    });
+  }
 });
