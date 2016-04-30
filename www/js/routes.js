@@ -152,6 +152,16 @@ angular
     }
   })
 
+  .state('menu-cliente.meus-transportes', {
+      url: '/meus-transportes',
+      views: {
+        'navigationView': {
+          templateUrl: 'templates/cliente/meus-transportes.html',
+          controller: 'MeusTransportesCtrl'
+        }
+    }
+  })
+
 
   $urlRouterProvider.otherwise('/home');
 });
