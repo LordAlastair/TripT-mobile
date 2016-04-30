@@ -151,7 +151,17 @@ angular
         }
     }
   })
+  
 
+    .state('menu-cliente.caracteristicas-vinculo', {
+    url: '/caracteristicas-vinculo/:vei_cd_veiculo',
+    views: {
+    'navigationView': {
+        templateUrl: 'templates/cliente/caracteristicas-vinculo.html',
+        controller: 'CaracteristicasVinculoCtrl'
+    }
+}
+})
 
   $urlRouterProvider.otherwise('/home');
 });
