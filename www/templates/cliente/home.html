@@ -1,13 +1,45 @@
-<ion-view title="Cliente">
-  <ion-content overflow-scroll="true">
-    <div class="row row-center" style="height: 100%">
-      <div class="col">
-        <div class="text-center">
-          <img class="logo" src="img/logo.png">
+<ion-view title="Página Inicial" cache-view="false">
 
-          <h1>Bem vindo</h1>
-        </div>
+  <ion-content overflow-scroll="true">
+    <form class="list">
+      <div class="item item-input-inset">
+        <label class="item-input-wrapper">
+          <i class="icon ion-search placeholder-icon"></i>
+          <input type="search" ng-model="filtro">
+        </label>
       </div>
-    </div>
+    </form>
+
+    <ion-content class="has-header" style="padding-bottom: 100px;">
+      <ion-refresher
+        pulling-text="Puxe para atualizar..."
+        on-refresh="refresh()">
+      </ion-refresher>
+
+      <ion-list
+        type="card"
+        show-delete="showDelete"
+        can-swipe="true">
+
+        <ion-item class="text-center" ng-if="loading">
+          <ion-spinner class="spinner-positive"></ion-spinner>
+        </ion-item>
+
+        <ion-item ng-if="!veiculos.length && !loading">
+          Nenhum veículo cadastrado.
+        </ion-item>
+
+        <ion-item
+          ng-repeat="veiculo in filteredVeiculos = (veiculos | filter: filtro)"
+          ui-sref="menu-cliente.caracteristicas-vinculo({ vei_cd_veiculo: veiculo.vei_cd_veiculo })">
+
+          {{veiculo.vei_ds_modelo}} - {{veiculo.vei_ds_placa}}
+        </ion-item>
+
+        <ion-item ng-if="!filteredVeiculos.length && filtro">
+          Nenhum veículo com o filtro '{{ filtro }}'.
+        </ion-item>
+      </ion-list>
+    </ion-content>
   </ion-content>
 </ion-view>
