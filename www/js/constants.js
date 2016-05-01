@@ -2,13 +2,14 @@ angular
 .module('app')
 .constant('BACKEND_URL', 'http://localhost:3000')
 .constant('TOKEN_KEY', "token")
-.constant('AUTH_EVENTS', {
-  notAuthenticated: 'auth-not-authenticated',
-  notAuthorized: 'auth-not-authorized'
+.constant('TIPO_PESSOA', {
+  FISICA: 1,
+  JURIDICA: 2
 })
-.constant('USER_ROLES', {
-  client: 'client_role',
-  fornecedor: 'fornecedor_role'
+.constant('TIPO_TRANSPORTE', {
+  ESCOLAR: 1,
+  VIAGEM: 2,
+  AMBOS: 3
 })
 .constant('$ionicLoadingConfig', {
   template: '<ion-spinner icon="ripple" class="spinner-positive"></ion-spinner>'

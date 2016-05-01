@@ -1,6 +1,6 @@
 angular
 .module('app.services')
-.factory('FornecedorPlanoService',['$resource', 'BACKEND_URL', function($resource, BACKEND_URL) {
+.factory('FornecedorPlano',['$resource', 'BACKEND_URL', function($resource, BACKEND_URL) {
   var methods = {
     save: {
       method: 'POST',

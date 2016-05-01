@@ -13,6 +13,6 @@ angular
   };
 
   var url = BACKEND_URL + '/veiculo/:vei_cd_veiculo';
-  
+
   return $resource(url, key, methods);
 }]);

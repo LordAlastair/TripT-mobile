@@ -1,7 +1,7 @@
 angular
 .module('app.services')
-.factory('UsuarioService', function($http, BACKEND_URL) {
-  var UsuarioService = {
+.factory('Usuario', function($http, BACKEND_URL) {
+  var Usuario = {
     signup: function (usuario) {
       return $http({
         method: 'POST',
@@ -30,7 +30,7 @@ angular
         data: usuario
       })
     },
-    deleteAcc: function (usuario) {
+    delete: function (usuario) {
       return $http({
         method: 'DELETE',
         url: BACKEND_URL + '/usuario/',
@@ -39,5 +39,5 @@ angular
     }
   };
 
-  return UsuarioService;
+  return Usuario;
 });

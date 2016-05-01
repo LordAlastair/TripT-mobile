@@ -1,29 +1,22 @@
 angular
 .module('app.services')
-.factory('FornecedorService', function($http, BACKEND_URL) {
-  var FornecedorService = {
-    create: function (fornecedor) {
-      return $http({
-        method: 'POST',
-        url: BACKEND_URL + '/fornecedor',
-        data: fornecedor
-      });
+.factory('Fornecedor', function($resource, BACKEND_URL) {
+  var methods = {
+    delete: {
+      method: 'DELETE',
+      isArray: true
     },
-    update: function (fornecedor) {
-      return $http({
-        method: 'PUT',
-        url: BACKEND_URL + '/fornecedor/',
-        data: fornecedor
-      });
-    },
-    load: function(fornecedor) {
-        return $http({
-          method: 'GET',
-          url: BACKEND_URL + '/fornecedor/',
-          data: fornecedor
-        });
+    update: {
+      method: 'PUT',
+      isArray: true
     }
   };
 
-  return FornecedorService;
+  var key = {
+    for_cd_fornecedor: "@for_cd_fornecedor"
+  };
+
+  var url = BACKEND_URL + '/fornecedor/:for_cd_fornecedor'
+
+  return $resource(url, {}, methods);
 });

@@ -1,45 +1,44 @@
 angular
 .module('app.controllers')
-.controller('ClienteCtrl', function($scope, ClienteService, InstituicaoService, $ionicPopup, $ionicLoading) {
+.controller('ClienteCtrl', function($scope, Cliente, Instituicao, $ionicPopup, $ionicLoading) {
 
   $scope.cliente = {};
   $scope.instituicoes = {};
-  $scope.save = _save;
-  $scope.marcaItem = _marcaItem;
+  $scope.save = save;
+  $scope.marcaItem = marcaItem;
 
   _init();
 
-   function _init(){
+  function _init(){
     _getCliente();
     _getInstituicoes();
-   }
-
-   function _getInstituicoes(){
-     InstituicaoService
-      .all()
-      .then(function(res){
-        $scope.instituicoes = res.data;
-      });
-   }
-
-   function _marcaItem(item){
-     return $scope.cliente.cli_cd_instituicao == item;
-   }
-
-   function _getCliente(){
-      ClienteService
-        .load($scope.cliente)
-        .then(function(res){
-          $scope.cliente = res.data;
-        });
   }
 
-  function _save(){
-      ClienteService
-        .update($scope.cliente)
-        .then(_success)
-        .catch(_error)
-        .finally(_finally);
+  function _getInstituicoes(){
+    Instituicao
+    .query(function (instituicoes) {
+      $scope.instituicoes = instituicoes;
+    })
+  }
+
+  function marcaItem(item){
+    return $scope.cliente.cli_cd_instituicao == item;
+  }
+
+  function _getCliente(){
+    Cliente
+    .query(function (cliente) {
+      $scope.cliente = cliente;
+    });
+  }
+
+  function save(){
+    Cliente
+    .update($scope.cliente)
+    .$promise
+    .then(_success)
+    .catch(_error)
+    .finally(_finally);
   }
 
   function _success(response) {
@@ -48,21 +47,15 @@ angular
     });
   }
 
-  function _error(err) {
+  function _error(response) {
     $ionicPopup.alert({
       title: 'Desculpe, mas um erro inesperado ocorreu. Por favor, tente novamente.',
-      template: _getErrors(err)
+      template: response.errorMessage
     });
   }
 
   function _finally() {
     $ionicLoading.hide();
-  }
-
-  function _getErrors(err) {
-    return err.data.map(function(error) {
-      return error.msg;
-    }).join("<br>");
   }
 
 });

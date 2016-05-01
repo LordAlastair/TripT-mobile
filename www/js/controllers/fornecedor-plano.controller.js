@@ -1,13 +1,12 @@
 angular
 .module('app.controllers')
-.controller('FornecedorPlanoCtrl', function($scope, $state, FornecedorPlanoService, PlanoService, $ionicPopup, $ionicLoading, $interval) {
+.controller('FornecedorPlanoCtrl', function($scope, $state, FornecedorPlano, Plano, $ionicPopup, $ionicLoading, $interval) {
   $scope.planos = {};
 
   _init();
 
   function _init(){
    _getPlanos();
-   _getFornecedorPlano();
    _setStateEventInterceptor();
   }
 
@@ -23,13 +22,15 @@ angular
   }
 
   function _getPlanos(){
-    PlanoService.query(function(planos){
+    Plano.query(function(planos){
       $scope.planos = planos;
+
+      _getFornecedorPlano();
     });
   };
 
   function _getFornecedorPlano(){
-    FornecedorPlanoService.query(function(fornecedorPlano){
+    FornecedorPlano.query(function(fornecedorPlano){
       var checkedPlanos = fornecedorPlano.map(fornecedorPlano => fornecedorPlano.fop_cd_plano);
 
       $scope.planos = $scope.planos.map(plano => {
@@ -61,11 +62,11 @@ angular
         return { fop_cd_plano: plano.pla_cd_plano };
       });
 
-      FornecedorPlanoService
-      .save(changes)
-      .$promise
-      .then(result => console.log(result))
-      .catch(_error)
+    FornecedorPlano
+    .save(changes)
+    .$promise
+    .then(result => console.log(result))
+    .catch(_error)
   }
 
   function _error(response) {

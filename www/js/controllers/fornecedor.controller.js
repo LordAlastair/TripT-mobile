@@ -1,41 +1,54 @@
 angular
 .module('app.controllers')
-.controller('FornecedorCtrl', function($scope, FornecedorService, $ionicPopup, $ionicLoading) {
+.controller('FornecedorCtrl', function($scope, Fornecedor, $ionicPopup, $ionicLoading, TIPO_PESSOA, TIPO_TRANSPORTE) {
+  $scope.TIPO_PESSOA = TIPO_PESSOA;
+  $scope.TIPO_TRANSPORTE = TIPO_TRANSPORTE;
 
-  $scope.fornecedor = {};
-  $scope.save = _save;
-  $scope.tipoPessoa = _tipoPessoa;
-  $scope.tipoTransporte = _tipoTransporte;
+  $scope.fornecedor = new Fornecedor();
+  $scope.save = save;
+  $scope.isTipoPessoa = isTipoPessoa;
+  $scope.isTipoTransporte = isTipoTransporte;
 
   _init();
 
-   function _init(){
+  function _init(){
     _getFornecedor();
-   }
-
-   function _tipoPessoa(tp){
-     return $scope.fornecedor.for_fl_pessoa == tp;
-   }
-
-   function _tipoTransporte(tp){
-     return $scope.fornecedor.for_cd_transporte == tp;
-   }
-
-   function _getFornecedor(){
-      FornecedorService
-        .load($scope.fornecedor)
-        .then(function(res){
-          console.log(res.data);
-          $scope.fornecedor = res.data;
-        });
   }
 
-  function _save(){
-      FornecedorService
-        .update($scope.fornecedor)
-        .then(_success)
-        .catch(_error)
-        .finally(_finally);
+  function isTipoPessoa(tipoPessoa){
+    return $scope.fornecedor.for_fl_pessoa == tipoPessoa;
+  }
+
+  function isTipoTransporte(tipoTransporte){
+    return $scope.fornecedor.for_cd_transporte == tipoTransporte;
+  }
+
+  function _getFornecedor(){
+    Fornecedor
+    .get($scope.fornecedor)
+    .$promise
+    .then(function (fornecedor) {
+      console.log(fornecedor);
+      $scope.fornecedor = fornecedor;
+    });
+  }
+
+  function save(){
+    if ($scope.fornecedor.for_cd_fornecedor) {
+      Fornecedor
+      .update($scope.fornecedor)
+      .$promise
+      .then(_success)
+      .catch(_error)
+      .finally(_finally);
+    } else {
+      Fornecedor
+      .save($scope.fornecedor)
+      .$promise
+      .then(_success)
+      .catch(_error)
+      .finally(_finally);
+    }
   }
 
   function _success(response) {
@@ -44,21 +57,14 @@ angular
     });
   }
 
-  function _error(err) {
+  function _error(response) {
     $ionicPopup.alert({
-      title: 'Desculpe, mas um erro inesperado ocorreu. Por favor, tente novamente.',
-      template: _getErrors(err)
+      title: 'Vish, deu ruim..',
+      template: response.errorMessage
     });
   }
 
   function _finally() {
     $ionicLoading.hide();
   }
-
-  function _getErrors(err) {
-    return err.data.map(function(error) {
-      return error.msg;
-    }).join("<br>");
-  }
-
 });

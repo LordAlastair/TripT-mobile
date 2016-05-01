@@ -1,27 +1,28 @@
 angular
 .module('app.controllers')
-.controller('ConfiguracoesCtrl', function($scope, $state, $ionicLoading, $ionicPopup, SessionService, UsuarioService) {
+.controller('ConfiguracoesCtrl', function($scope, $state, $ionicLoading, $ionicPopup, SessionService, Usuario) {
   $scope.usuario = {};
 
-  $scope.deleteAcc = function() {
+  $scope.deleteAccount = deleteAccount;
 
+  function deleteAccount() {
     $ionicPopup.confirm({
       title: '):',
-      template: 'Tem certeza que deseja excluir sua conta?'
+      template: 'Tem certeza que deseja excluir sua conta?',
+      okType: 'button-assertive'
     })
     .then(function(res){
-        if(res){
-          $ionicLoading.show();
+      if (res) {
+        $ionicLoading.show();
 
-          UsuarioService
-          .deleteAcc($scope.usuario)
-          .then(_success)
-          .catch(_error)
-          .finally(_finally);
-        }
-      })
-    };
-
+        Usuario
+        .delete($scope.usuario)
+        .then(_success)
+        .catch(_error)
+        .finally(_finally);
+      }
+    })
+  }
 
   function _success(response) {
     $ionicPopup.alert({

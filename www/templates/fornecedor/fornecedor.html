@@ -6,8 +6,8 @@
           Tipo de Pessoa
         </div>
         <select ng-model="fornecedor.for_fl_pessoa" >
-          <option value="1" ng-selected="tipoPessoa(1)">Física</option>
-          <option value="2" ng-selected="tipoPessoa(2)">Jurídica</option>
+          <option ng-value="TIPO_PESSOA.FISICA" ng-selected="isTipoPessoa(TIPO_PESSOA.FISICA)">Física</option>
+          <option ng-value="TIPO_PESSOA.JURIDICA" ng-selected="isTipoPessoa(TIPO_PESSOA.JURIDICA)">Jurídica</option>
         </select>
       </label>
     </div>
@@ -18,15 +18,15 @@
           Tipo de Transporte
         </div>
         <select ng-model="fornecedor.for_cd_transporte" >
-          <option value="1" ng-selected="tipoTransporte(1)">Escolar</option>
-          <option value="2" ng-selected="tipoTransporte(2)">Viagem</option>
-          <option value="3" ng-selected="tipoTransporte(3)">Escolar e Viagem</option>
+          <option ng-value="TIPO_TRANSPORTE.ESCOLAR" ng-selected="isTipoTransporte(TIPO_TRANSPORTE.ESCOLAR)">Escolar</option>
+          <option ng-value="TIPO_TRANSPORTE.VIAGEM" ng-selected="isTipoTransporte(TIPO_TRANSPORTE.VIAGEM)">Viagem</option>
+          <option ng-value="TIPO_TRANSPORTE.AMBOS" ng-selected="isTipoTransporte(TIPO_TRANSPORTE.AMBOS)">Escolar e Viagem</option>
         </select>
       </label>
     </div>
 
     <div class="list card">
-      <div class="item item-input" ng-show="tipoPessoa(2)">
+      <div class="item item-input" ng-show="isTipoPessoa(TIPO_PESSOA.JURIDICA)">
         <label class="item-floating-label"  style="float:left; width:50%">
           <span class="input-label">Nome fantasia</span>
           <input type="text" ng-model="fornecedor.for_ds_fantasia_nome" placeholder="Nome Fantasia">
@@ -38,7 +38,7 @@
         </label>
       </div>
 
-      <div class="item item-input" ng-show="tipoPessoa(1)" >
+      <div class="item item-input" ng-show="isTipoPessoa(TIPO_PESSOA.FISICA)" >
         <label class="item-floating-label" style="float:left; width:50%">
           <span class="input-label">Nome</span>
           <input type="text" ng-model="fornecedor.for_ds_fantasia_nome" placeholder="Nome">
@@ -50,7 +50,7 @@
         </label>
       </div>
 
-      <label class="item item-input item-floating-label" ng-show="tipoPessoa(2)">
+      <label class="item item-input item-floating-label" ng-show="isTipoPessoa(TIPO_PESSOA.JURIDICA)">
         <span class="input-label">Razão Social</span>
         <input type="text" ng-model="fornecedor.for_ds_razao_social" placeholder="Razão Social">
       </label>

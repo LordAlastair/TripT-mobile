@@ -7,7 +7,7 @@ angular
     $ionicHistory = $injector.get("$ionicHistory");
 
     localStorage.clear();
-    // $ionicHistory.clearHistory();
+    $ionicHistory.clearHistory();
   };
 
   SessionService.getToken = localStorage.getItem.bind(localStorage, TOKEN_KEY);

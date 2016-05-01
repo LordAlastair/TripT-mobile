@@ -1,12 +1,12 @@
 angular
 .module('app.controllers')
-.controller('RecoveryCtrl', function($scope, $state, $ionicLoading, $ionicPopup, UsuarioService) {
+.controller('RecoveryCtrl', function($scope, $state, $ionicLoading, $ionicPopup, Usuario) {
   $scope.usuario = {};
 
   $scope.recovery = function() {
     $ionicLoading.show();
 
-    UsuarioService
+    Usuario
     .recovery($scope.usuario)
     .then(_success)
     .catch(_error)

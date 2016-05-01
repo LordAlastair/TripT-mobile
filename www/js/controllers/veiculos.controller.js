@@ -57,7 +57,8 @@ angular
   function removeVeiculo(veiculo, $index) {
     $ionicPopup.confirm({
       title: 'Remover Veículo',
-      template: 'Tem certeza?'
+      template: 'Tem certeza?',
+      okType: 'button-assertive'
     })
     .then(function(res) {
       if (res) {

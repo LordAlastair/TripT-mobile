@@ -1,12 +1,12 @@
 angular
 .module('app.controllers')
-.controller('ChangePassCtrl', function($scope, $state, $ionicLoading, $ionicPopup, SessionService, UsuarioService) {
+.controller('ChangePassCtrl', function($scope, $state, $ionicLoading, $ionicPopup, SessionService, Usuario) {
   $scope.usuario = {};
 
   $scope.changePass = function() {
     $ionicLoading.show();
 
-    UsuarioService
+    Usuario
     .changePass($scope.usuario)
     .then(_success)
     .catch(_error)

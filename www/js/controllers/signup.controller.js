@@ -1,12 +1,12 @@
 angular
 .module('app.controllers')
-.controller('SignupCtrl', function($scope, UsuarioService, $state, $ionicLoading, $ionicPopup) {
+.controller('SignupCtrl', function($scope, Usuario, $state, $ionicLoading, $ionicPopup) {
   $scope.usuario = {};
 
   $scope.signup = function() {
     $ionicLoading.show();
 
-    UsuarioService
+    Usuario
     .signup($scope.usuario)
     .then(_success)
     .catch(_error)
