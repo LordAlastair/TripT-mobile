@@ -1,0 +1,101 @@
+<ion-view hide-nav-bar="false" title="Meu Cadastro">
+  <ion-content overflow-scroll="true">
+    <div class="list card">
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Tipo de Pessoa
+        </div>
+        <select ng-model="fornecedor.for_fl_pessoa" >
+          <option ng-value="TIPO_PESSOA.FISICA" ng-selected="isTipoPessoa(TIPO_PESSOA.FISICA)">Física</option>
+          <option ng-value="TIPO_PESSOA.JURIDICA" ng-selected="isTipoPessoa(TIPO_PESSOA.JURIDICA)">Jurídica</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="list card">
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Tipo de Transporte
+        </div>
+        <select ng-model="fornecedor.for_cd_transporte" >
+          <option ng-value="TIPO_TRANSPORTE.ESCOLAR" ng-selected="isTipoTransporte(TIPO_TRANSPORTE.ESCOLAR)">Escolar</option>
+          <option ng-value="TIPO_TRANSPORTE.VIAGEM" ng-selected="isTipoTransporte(TIPO_TRANSPORTE.VIAGEM)">Viagem</option>
+          <option ng-value="TIPO_TRANSPORTE.AMBOS" ng-selected="isTipoTransporte(TIPO_TRANSPORTE.AMBOS)">Escolar e Viagem</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="list card">
+      <div class="item item-input" ng-show="isTipoPessoa(TIPO_PESSOA.JURIDICA)">
+        <label class="item-floating-label"  style="float:left; width:50%">
+          <span class="input-label">Nome fantasia</span>
+          <input type="text" ng-model="fornecedor.for_ds_fantasia_nome" placeholder="Nome Fantasia">
+        </label>
+
+        <label class="item-floating-label" style="float:left; width:50%">
+          <span class="input-label">CNPJ</span>
+          <input type="text" ng-model="fornecedor.for_ds_cnpj_cpf" placeholder="CNPJ">
+        </label>
+      </div>
+
+      <div class="item item-input" ng-show="isTipoPessoa(TIPO_PESSOA.FISICA)" >
+        <label class="item-floating-label" style="float:left; width:50%">
+          <span class="input-label">Nome</span>
+          <input type="text" ng-model="fornecedor.for_ds_fantasia_nome" placeholder="Nome">
+        </label>
+
+        <label class="item-floating-label" style="float:left; width:50%">
+          <span class="input-label">CPF</span>
+          <input type="text" ng-model="fornecedor.for_ds_cnpj_cpf" placeholder="CPF">
+        </label>
+      </div>
+
+      <label class="item item-input item-floating-label" ng-show="isTipoPessoa(TIPO_PESSOA.JURIDICA)">
+        <span class="input-label">Razão Social</span>
+        <input type="text" ng-model="fornecedor.for_ds_razao_social" placeholder="Razão Social">
+      </label>
+
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Celular</span>
+        <input type="tel" ng-model="fornecedor.for_ds_celular" placeholder="Celular">
+      </label>
+
+      <label class="item item-input item-floating-label">
+        <span class="input-label">CEP</span>
+        <input type="text" ng-model="fornecedor.for_ds_cep" placeholder="CEP">
+      </label>
+
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Endereço</span>
+        <input type="text" ng-model="fornecedor.for_ds_endereco" placeholder="Endereço">
+      </label>
+
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Número</span>
+        <input type="number" ng-model="fornecedor.for_ds_numero" placeholder="Número">
+      </label>
+
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Complemento</span>
+        <input type="text" ng-model="fornecedor.for_ds_complemento" placeholder="Complemento">
+      </label>
+
+      <div class="item item-input">
+        <label class="item-floating-label" style="float:left; width:50%">
+          <span class="input-label">Bairro</span>
+          <input type="text" ng-model="fornecedor.for_ds_bairro" placeholder="Bairro">
+        </label>
+
+        <label class="item-floating-label" style="float:left; width:50%">
+          <span class="input-label">Cidade</span>
+          <input type="text" ng-model="fornecedor.for_ds_cidade" placeholder="Cidade">
+        </label>
+      </div>
+    </div>
+
+    <div class="item" style="border: 0; padding-top:0; margin-top:0;">
+      <button class="button button-block button-outline button-positive" ng-click="save()">SALVAR</button>
+    </div>
+
+  </ion-content>
+</ion-view>

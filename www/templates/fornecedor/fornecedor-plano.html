@@ -1,0 +1,21 @@
+<ion-view title="Planos/Pagamentos" cache-view="false">
+  <ion-content overflow-scroll="true">
+
+    <ion-list>
+      <ion-item class="item-divider">Planos</ion-item>
+
+      <ion-list>
+        <ion-checkbox ng-model="plano.checked" ng-repeat="plano in planos">{{ plano.pla_ds_plano }}</ion-checkbox>
+      </ion-list>
+
+      <ion-item class="item-divider">Pagamentos</ion-item>
+
+      <ion-list ng-model="formaPagamento">
+        <ion-checkbox ng-value="Dinheiro">Dinheiro</ion-checkbox>
+        <ion-checkbox ng-value="Mensal">Cartão</ion-checkbox>
+        <ion-checkbox ng-value="Trimestral">Cheque</ion-checkbox>
+        <ion-checkbox ng-value="Semestral">Boleto</ion-checkbox>
+      </ion-list>
+    </ion-list>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,50 @@
+<ion-modal-view>
+  <ion-header-bar class="bar-positive">
+    <h1 class="title">Adicionar Veículo</h1>
+    <div class="button button-clear" ng-click="addVeiculoModal.hide()">
+      <span class="icon ion-ios-close-empty"></span>
+    </div>
+  </ion-header-bar>
+
+  <ion-content padding="true" style="padding: 10px">
+    <form class="veiculo-form">
+      <ion-list type="card">
+        <label class="item item-input">
+          <span class="veiculo-form__label input-label">Modelo</span>
+          <input class="veiculo-form__field" type="text" ng-model="veiculo.vei_ds_modelo" required>
+        </label>
+
+        <label class="item item-input">
+          <span class="veiculo-form__label input-label">Placa do Veículo</span>
+          <input class="veiculo-form__field" type="text" ng-model="veiculo.vei_ds_placa" required>
+        </label>
+
+        <label class="item item-input">
+          <span class="veiculo-form__label input-label">DER</span>
+          <input class="veiculo-form__field" type="text" ng-model="veiculo.vei_ds_der" required>
+        </label>
+
+        <label class="item item-input">
+          <span class="veiculo-form__label input-label">Quantidade de Vagas</span>
+          <input class="veiculo-form__field" type="number" ng-model="veiculo.vei_qt_vagas" required>
+        </label>
+      </ion-list>
+
+      <ion-list type="card">
+        <ion-checkbox
+          ng-model="veiculo.caracteristica[$index]"
+          ng-value="item.car_cd_caracteristica"
+          ng-repeat="item in caracteristicas track by $index"
+          ng-checked="veiculo.caracteristica[$index]">
+          {{ item.car_ds_caracteristica }}
+        </ion-checkbox>
+      </ion-list>
+
+      <a
+        ng-click="saveVeiculo()"
+        class="button button-positive button-block button-outline">
+        Cadastrar Veículo
+      </a>
+    </form>
+  </ion-content>
+</ion-modal-view>

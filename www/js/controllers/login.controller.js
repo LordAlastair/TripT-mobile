@@ -1,15 +1,31 @@
 angular
 .module('app.controllers')
-.controller('LoginCtrl', function($scope, $state, $ionicLoading, $timeout) {
+.controller('LoginCtrl', function($scope, $state, $ionicLoading, $ionicPopup, Usuario, SessionService) {
   $scope.usuario = {};
 
   $scope.login = function() {
     $ionicLoading.show();
 
-    $timeout(function() {
-      $ionicLoading.hide();
-
-      $state.go('menu-fornecedores.veiculos');
-    }, 1000);
+    Usuario
+    .authenticate($scope.usuario)
+    .then(_success)
+    .catch(_error)
+    .finally(_finally);
   };
-})
+
+  function _success(response) {
+    SessionService.setToken(response.data.token);
+    $state.go('menu-fornecedor.home');
+  }
+
+  function _error(response) {
+    $ionicPopup.alert({
+      title: 'Vish, deu ruim..',
+      template: response.errorMessage
+    });
+  }
+
+  function _finally() {
+    $ionicLoading.hide();
+  }
+});

@@ -1,45 +1,45 @@
-<ion-view hide-nav-bar="true">
-    <ion-content overflow-scroll="true">
-      <div class="row row-center" style="height: 100%">
-        <div class="col">
-          <div class="text-center">
-            <img
-              width="30%"
-              height="auto"
-              src="img/vali-logo.png">
-          </div>
-
-          <ion-list>
-            <div class="spacer" style="width: 100%; height: 8px;"></div>
-
-            <label class="item item-input" name="email">
-              <span class="input-label">Email</span>
-              <input type="email" ng-model="usuario.usu_ds_email" required>
-            </label>
-
-            <label class="item item-input" name="password">
-              <span class="input-label">Senha</span>
-              <input type="password" ng-model="usuario.usu_ds_senha" required>
-            </label>
-
-            <div class="spacer" style="width: 100%; height: 10px;"></div>
-
-            <button
-              id="login-button"
-              ng-click="login()"
-              type="button"
-              class="button button-outline button-royal button-block">
-              Log in
-            </button>
-
-            <a
-              id="signup-button"
-              ui-sref="signup"
-              class="button button-positive button-block button-clear">
-              Não tenho uma conta ainda :(
-            </a>
-          </ion-list>
+<ion-view title="Login">
+  <ion-content overflow-scroll="true">
+    <div class="container row row-center" style="height: 100%">
+      <div class="col">
+        <div class="text-center">
+          <img class="logo" src="img/logo.png">
         </div>
+
+        <div class="spacer" style="width: 100%; height: 8px;"></div>
+
+        <form class="responsive-form">
+          <label class="item item-input">
+            <span class="input-label">Email</span>
+            <input class="login-form__email" type="email" ng-model="usuario.usu_ds_email" required>
+          </label>
+
+          <label class="item item-input">
+            <span class="input-label">Senha</span>
+            <input class="login-form__password" type="password" ng-model="usuario.usu_ds_senha" required>
+          </label>
+          <div class="spacer" style="width: 100%; height: 10px;"></div>
+
+          <button
+            ng-click="login()"
+            type="button"
+            class="button button-outline button-positive button-block">
+            Log in
+          </button>
+
+          <a
+            ui-sref="signup"
+            class="button button-positive button-block button-clear">
+            Não tenho uma conta ainda :(
+          </a>
+
+          <a
+            ui-sref="recovery"
+            class="button button-positive button-block button-clear">
+            Ou, perdi minha senha!
+          </a>
+        </form>
       </div>
-    </ion-content>
+    </div>
+  </ion-content>
 </ion-view>
