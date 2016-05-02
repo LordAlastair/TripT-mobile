@@ -3,7 +3,7 @@ services:
   webapp:
     container_name: tript_webapp
     build: .
-    command: sh -c 'npm install; bower install --allow-root; npm run startw'
+    command: sh -c 'npm install --production; bower install --allow-root; npm start'
     volumes:
       - .:/app
     ports:
