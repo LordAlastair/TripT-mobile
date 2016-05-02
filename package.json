@@ -3,7 +3,7 @@
   "version": "0.0.2",
   "description": "tript",
   "scripts": {
-    "startw": "http-server www/ -p 8100"
+    "start": "http-server www/ -p 8100"
   },
   "dependencies": {
     "http-server": "^0.9.0"
