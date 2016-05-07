@@ -10,11 +10,8 @@
 
       <ion-item class="item-divider">Pagamentos</ion-item>
 
-      <ion-list ng-model="formaPagamento">
-        <ion-checkbox ng-value="Dinheiro">Dinheiro</ion-checkbox>
-        <ion-checkbox ng-value="Mensal">Cartão</ion-checkbox>
-        <ion-checkbox ng-value="Trimestral">Cheque</ion-checkbox>
-        <ion-checkbox ng-value="Semestral">Boleto</ion-checkbox>
+      <ion-list>
+        <ion-checkbox ng-model="pagamento.checked" ng-repeat="pagamento in pagamentos">{{ pagamento.pag_ds_pagamento }}</ion-checkdbox>
       </ion-list>
     </ion-list>
   </ion-content>

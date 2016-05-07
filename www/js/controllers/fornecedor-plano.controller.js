@@ -1,12 +1,14 @@
 angular
 .module('app.controllers')
-.controller('FornecedorPlanoCtrl', function($scope, $state, FornecedorPlano, Plano, $ionicPopup, $ionicLoading, $interval) {
+.controller('FornecedorPlanoCtrl', function($scope, $state, FornecedorPlano, Plano, Pagamentos, $ionicPopup, $ionicLoading, $interval) {
   $scope.planos = {};
+  $scope.pagamentos = {};
 
   _init();
 
   function _init(){
    _getPlanos();
+   _getPagamentos();
    _setStateEventInterceptor();
   }
 
@@ -26,6 +28,13 @@ angular
       $scope.planos = planos;
 
       _getFornecedorPlano();
+    });
+  };
+
+  function _getPagamentos(){
+    Pagamentos.query(function(pagamentos){
+      $scope.pagamentos = pagamentos;
+      console.log(pagamentos);
     });
   };
 
