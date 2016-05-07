@@ -1,6 +1,6 @@
 angular
 .module('app')
-.constant('BACKEND_URL', 'http://botocudo.fluxor.org:3000')
+.constant('BACKEND_URL', 'http://localhost:3000')
 .constant('TOKEN_KEY', "token")
 .constant('TIPO_PESSOA', {
   FISICA: 1,
