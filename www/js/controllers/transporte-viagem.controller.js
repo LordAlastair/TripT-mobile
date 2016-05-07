@@ -1,6 +1,6 @@
 angular
 .module('app.controllers')
-.controller('HomeClienteCtrl', function($scope, $ionicLoading, $ionicPopup, Veiculo, Caracteristica) {
+.controller('TransporteViagemCtrl', function($scope, $ionicLoading, $ionicPopup, Veiculo, Caracteristica) {
 
   $scope.filtro = '';
   $scope.loading = false;

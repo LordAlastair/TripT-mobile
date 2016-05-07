@@ -23,16 +23,14 @@
   </ion-nav-buttons>
 
   <ion-content overflow-scroll="true">
-    <form class="list">
-      <div class="item item-input-inset">
-        <label class="item-input-wrapper">
+    <form class="list list-inset">
+        <label class="item item-input">
           <i class="icon ion-search placeholder-icon"></i>
-          <input type="search" ng-model="filtro">
+          <input type="search" ng-model="filtro" placeholder="Search">
         </label>
-      </div>
     </form>
-
     <ion-content class="has-header" style="padding-bottom: 100px;">
+
       <ion-refresher
         pulling-text="Puxe para atualizar..."
         on-refresh="refresh()">

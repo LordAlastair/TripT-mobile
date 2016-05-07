@@ -174,5 +174,23 @@ angular
 }
 })
 
+  .state('transporte-universitario', {
+    url: '/transporte-universitario',
+    templateUrl: 'templates/transporte-universitario.html',
+    controller: 'SearchCtrl'
+  })
+
+
+  .state('transporte-viagem', {
+    url: '/transporte-viagem',
+    templateUrl: 'templates/transporte-viagem.html',
+    controller: 'TransporteViagemCtrl'
+  })
+
+
+
+
+
+
   $urlRouterProvider.otherwise('/home');
 });
