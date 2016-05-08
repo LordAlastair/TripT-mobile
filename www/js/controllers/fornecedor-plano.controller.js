@@ -1,6 +1,6 @@
 angular
 .module('app.controllers')
-.controller('FornecedorPlanoCtrl', function($scope, $state, FornecedorPlano, Plano, Pagamentos, $ionicPopup, $ionicLoading, $interval) {
+.controller('FornecedorPlanoCtrl', function($scope, $state, FornecedorPlano, FornecedorPagamento, Plano, Pagamentos, $ionicPopup, $ionicLoading, $interval) {
   $scope.planos = {};
   $scope.pagamentos = {};
 
@@ -34,7 +34,8 @@ angular
   function _getPagamentos(){
     Pagamentos.query(function(pagamentos){
       $scope.pagamentos = pagamentos;
-      console.log(pagamentos);
+
+      _getFornecedorPagamento();
     });
   };
 
@@ -48,6 +49,18 @@ angular
       });
     });
   };
+
+  function _getFornecedorPagamento(){
+    FornecedorPagamento.query(function(fornecedorPagamento){
+      var checkedPagamentos = fornecedorPagamento.map(fornecedorPagamento => fornecedorPagamento.fpg_cd_pagamento);
+
+      $scope.pagamentos = $scope.pagamentos.map(pagamento => {
+        pagamento.checked = checkedPagamentos.indexOf(pagamento.pag_cd_pagamento) !== -1;
+        return pagamento;
+      });
+    });
+  };
+
 
   function _saveFornecedorPlano(){
     var changes = {
@@ -77,6 +90,36 @@ angular
     .then(result => console.log(result))
     .catch(_error)
   }
+
+
+  function _saveFornecedorPagamento(){
+      var changes = {
+        checked: [],
+        unchecked: []
+      };
+
+      changes.checked =
+        $scope
+        .pagamentos
+        .filter(pagamento => pagamento.checked)
+        .map(pagamento => {
+          return { fpg_cd_pagamento: pagamento.pag_cd_pagamento };
+        });
+
+      changes.unchecked =
+        $scope
+        .pagamentos
+        .filter(pagamento => !pagamento.checked)
+        .map(pagamento => {
+          return { fpg_cd_pagamento: pagamento.pag_cd_pagamento };
+        });
+
+      FornecedorPagamento
+      .save(changes)
+      .$promise
+      .then(result => console.log(result))
+      .catch(_error)
+    }
 
   function _error(response) {
     $ionicPopup.alert({
