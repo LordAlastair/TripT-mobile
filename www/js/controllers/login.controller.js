@@ -15,7 +15,7 @@ angular
 
   function _success(response) {
     SessionService.setToken(response.data.token);
-    $state.go('menu-fornecedor.home');
+    SessionService.getUserData().role.type == "usuario" ? $state.go('menu-cliente.home') : $state.go('menu-fornecedor.home');
   }
 
   function _error(response) {
