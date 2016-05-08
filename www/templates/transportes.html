@@ -4,9 +4,26 @@
     <form class="list list-inset">
         <label class="item item-input">
           <i class="icon ion-search placeholder-icon"></i>
-          <input type="search" ng-model="filtro" placeholder="Search">
+          <input type="search" ng-model="search" placeholder="Buscar">
         </label>
     </form>
+
+    <nav
+      mfb-menu
+      position="br"
+      effect="zoomin"
+      active-icon="ion-close"
+      resting-icon="ion-more"
+      toggling-method="click">
+      <button
+        mfb-button
+        ng-click="filtrarVeiculosModal.show()"
+        icon="ion-android-menu"
+        label="Filtrar">
+      </button>
+    </nav>
+
+
     <ion-content class="has-header" style="padding-bottom: 100px;">
 
       <ion-refresher
@@ -34,16 +51,6 @@
 
           {{veiculo.vei_ds_modelo}} - {{veiculo.vei_ds_placa}}
 
-          <ion-option-button
-            class="button-assertive"
-            ng-click="edit(item)">
-            Edit
-          </ion-option-button>
-
-          <ion-delete-button
-            class="ion-minus-circled"
-            ng-click="removeVeiculo(veiculo, $index)">
-          </ion-delete-button>
         </ion-item>
 
         <ion-item ng-if="!filteredVeiculos.length && filtro">
