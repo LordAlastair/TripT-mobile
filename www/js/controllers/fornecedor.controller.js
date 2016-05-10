@@ -28,7 +28,9 @@ angular
     .get($scope.fornecedor)
     .$promise
     .then(function (fornecedor) {
-      console.log(fornecedor);
+      if(!fornecedor){
+        return;
+      }
       $scope.fornecedor = fornecedor;
     });
   }

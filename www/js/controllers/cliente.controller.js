@@ -28,13 +28,16 @@ angular
   function _getCliente(){
     Cliente
     .query(function (cliente) {
+      if(!cliente){
+        return;
+      }
       $scope.cliente = cliente;
     });
   }
 
   function save(){
     Cliente
-    .update($scope.cliente)
+    .save($scope.cliente)
     .$promise
     .then(_success)
     .catch(_error)

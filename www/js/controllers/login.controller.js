@@ -46,7 +46,7 @@ angular
           },
         ]
       });
-    }  
+    }
   }
 
   function _error(response) {
