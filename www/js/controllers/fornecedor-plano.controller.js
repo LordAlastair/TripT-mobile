@@ -19,6 +19,7 @@ angular
 
       if (fromState.name == $state.current.name) {
         _saveFornecedorPlano();
+        _saveFornecedorPagamento();
       }
     });
   }

@@ -14,8 +14,39 @@ angular
   };
 
   function _success(response) {
+    var role = "";
     SessionService.setToken(response.data.token);
-    SessionService.getUserData().role.type == "usuario" ? $state.go('menu-cliente.home') : $state.go('menu-fornecedor.home');
+    role = SessionService.getUserData().role.type;
+
+    if(role == "usuario"){
+      $state.go('menu-cliente.home')
+    }else
+    if(role == "fornecedor"){
+      $state.go('menu-fornecedor.home')
+    }else{
+      //CASO AINDA NÃO IDENTIFICADO PERGUNTA SE É CLIENTE OU FORNCEDOR
+      var selectRole = $ionicPopup.show({
+        title: 'Seja Bem-vindo!',
+        template: 'Ainda não indetificamos seu perfil, você é:',
+        scope: $scope,
+        buttons: [
+          {
+            text: '<b>Cliente</b>',
+            type: 'button-positive',
+            onTap: function() {
+              $state.go('menu-cliente.meu-cadastro');
+            }
+          },
+          {
+            text: '<b>Fornecedor</b>',
+            type: 'button-positive',
+            onTap: function() {
+              $state.go('menu-fornecedor.meu-cadastro');
+            }
+          },
+        ]
+      });
+    }  
   }
 
   function _error(response) {
