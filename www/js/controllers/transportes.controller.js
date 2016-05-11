@@ -1,6 +1,8 @@
 angular
 .module('app.controllers')
-.controller('TransportesCtrl', function($scope, $ionicLoading, $ionicModal, $ionicPopup, Search, Bairro, Instituicao) {
+.controller('TransportesCtrl', function($scope, $ionicLoading, $ionicModal, $ionicPopup, Search, Bairro, Instituicao, TIPO_TRANSPORTE, $ionicFilterBar) {
+  $scope.TIPO_TRANSPORTE = TIPO_TRANSPORTE;
+
   $scope.veiculo = {};
   $scope.filtro = {};
   $scope.veiculos = [];
@@ -8,13 +10,14 @@ angular
   $scope.instituicoes = [];
   $scope.loading = false;
   $scope.filtrarVeiculosModal = null;
+  $scope.filterBarInstance = null;
 
   $scope.refresh = refresh;
 
   _init();
 
   function _init() {
-    _getVeiculos();
+    getVeiculos();
     _setupFiltrarVeiculosModal();
     _getBairros();
     _getInstituicoes();
@@ -31,14 +34,15 @@ angular
     .catch(_error);
   }
 
-  function _getVeiculos() {
+  function getVeiculos() {
     _toggleLoading();
 
     Search
-    .query()
+    .query($scope.filtro)
     .$promise
     .then(function (veiculos) {
       $scope.veiculos = veiculos;
+      console.log($scope.veiculos);
       _toggleLoading();
     })
     .catch(_error);
@@ -99,4 +103,13 @@ angular
       $scope.filtro = {};
     });
   }
+
+  $scope.showFilterBar = function () {
+    var filterBarInstance = $ionicFilterBar.show({
+      items: $scope.veiculos,
+      update: function (filteredVeiculos, filterText) {
+        $scope.veiculos = filteredVeiculos;
+      },
+    });
+  };
 })

@@ -1,12 +1,13 @@
-<ion-view title="Transportes" cache-view="false">
-
+<ion-view hide-nav-bar="true" cache-view="false">
   <ion-content overflow-scroll="true">
-    <form class="list list-inset">
-        <label class="item item-input">
-          <i class="icon ion-search placeholder-icon"></i>
-          <input type="search" ng-model="search" placeholder="Buscar">
-        </label>
-    </form>
+
+    <ion-header-bar class="bar-positive">
+      <h1 class="title"></h1>
+      <div class="buttons">
+          <button class="button button-icon ion-android-search"
+                  ng-click="showFilterBar()"></button>
+      </div>
+    </ion-header-bar>
 
     <nav
       mfb-menu
@@ -38,10 +39,6 @@
 
         <ion-item class="text-center" ng-if="loading">
           <ion-spinner class="spinner-positive"></ion-spinner>
-        </ion-item>
-
-        <ion-item ng-if="!veiculos.length && !loading">
-          Nenhum veículo cadastrado.
         </ion-item>
 
         <ion-item

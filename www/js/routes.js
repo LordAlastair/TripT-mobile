@@ -41,16 +41,6 @@ angular
     controller: 'RecoveryCtrl'
   })
 
-  .state('menu-fornecedor.home', {
-    url: '/home-fornecedor',
-    views: {
-      'navigationView': {
-        templateUrl: 'templates/fornecedor/home.html',
-        controller: 'HomeFornecedorCtrl'
-      }
-    }
-  })
-
   .state('menu-fornecedor.veiculos', {
     url: '/veiculos',
     views: {
@@ -103,21 +93,11 @@ angular
 
 
   .state('menu-fornecedor.plano', {
-  url: '/fornecedor-plano',
-  views: {
-    'navigationView': {
-      templateUrl: 'templates/fornecedor/fornecedor-plano.html',
-      controller: 'FornecedorPlanoCtrl'
-    }
-  }
-})
-
-  .state('menu-cliente.home', {
-    url: '/home-cliente',
+    url: '/fornecedor-plano',
     views: {
       'navigationView': {
-        templateUrl: 'templates/cliente/home.html',
-        controller: 'HomeClienteCtrl'
+        templateUrl: 'templates/fornecedor/fornecedor-plano.html',
+        controller: 'FornecedorPlanoCtrl'
       }
     }
   })
@@ -143,23 +123,23 @@ angular
   })
 
   .state('menu-cliente.meu-cadastro', {
-      url: '/meu-cadastro',
-      views: {
-        'navigationView': {
-          templateUrl: 'templates/cliente/cliente.html',
-          controller: 'ClienteCtrl'
-        }
+    url: '/meu-cadastro',
+    views: {
+      'navigationView': {
+        templateUrl: 'templates/cliente/cliente.html',
+        controller: 'ClienteCtrl'
+      }
     }
   })
 
 
   .state('menu-cliente.meus-transportes', {
-      url: '/meus-transportes',
-      views: {
-        'navigationView': {
-          templateUrl: 'templates/cliente/meus-transportes.html',
-          controller: 'MeusTransportesCtrl'
-        }
+    url: '/meus-transportes',
+    views: {
+      'navigationView': {
+        templateUrl: 'templates/cliente/meus-transportes.html',
+        controller: 'MeusTransportesCtrl'
+      }
     }
   })
 
@@ -167,18 +147,31 @@ angular
   .state('menu-cliente.caracteristicas-vinculo', {
     url: '/caracteristicas-vinculo/:vei_cd_veiculo',
     views: {
-    'navigationView': {
+      'navigationView': {
         templateUrl: 'templates/cliente/caracteristicas-vinculo.html',
         controller: 'CaracteristicasVinculoCtrl'
+      }
     }
-}
-})
-
-  .state('transportes', {
-    url: '/search/',
-    templateUrl: 'templates/transportes.html',
-    controller: 'TransportesCtrl'
   })
+  .state('menu-cliente.home', {
+    url: '/home',
+    views: {
+      'navigationView': {
+        templateUrl: 'templates/principal/home.html',
+        controller: 'TransportesCtrl'
+      }
+    }
+  })
+  .state('menu-fornecedor.home', {
+    url: '/home',
+    views: {
+      'navigationView': {
+        templateUrl: 'templates/principal/home.html',
+        controller: 'TransportesCtrl'
+      }
+    }
+  })
+
 
   $urlRouterProvider.otherwise('/home');
 });

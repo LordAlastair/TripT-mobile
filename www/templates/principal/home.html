@@ -1,0 +1,52 @@
+<ion-view hide-nav-bar="false">
+
+  <nav
+      mfb-menu
+      position="br"
+      effect="zoomin"
+      active-icon="ion-close"
+      resting-icon="ion-more"
+      toggling-method="click">
+      <button
+      mfb-button
+      ng-click="filtrarVeiculosModal.show()"
+      icon="ion-android-menu"
+      label="Filtrar">
+    </button>
+  </nav>
+
+  <ion-content class="has-header">
+    <form class="list list-inset">
+        <label class="item item-input">
+          <i class="icon ion-search placeholder-icon"></i>
+          <input type="search" ng-model="pesquisar" placeholder="Pesquisar">
+        </label>
+    </form>
+      <ion-refresher
+      pulling-text="Puxe para atualizar..."
+      on-refresh="refresh()">
+    </ion-refresher>
+
+    <div class="card" ng-repeat="veiculo in veiculos | filter: pesquisar" style="padding:10px">
+
+        <h3 class="title">Destino UVV</h3>
+        <div style="float:left">
+          <h4>Fornecedor</h4>
+          <p ng-show="veiculo.vei_ds_der">
+            Registrado <span style="color:#ccc">({{veiculo.vei_ds_der}})</span>
+          </p>
+          <p ng-show="!veiculo.vei_ds_der">Sem Registro</p>
+          <i class="ion ion-wifi" style="font-size:30px;margin-right:10px"></i>
+          <i class="ion ion-radio-waves" style="font-size:30px;margin-right:10px"></i>
+          <i class="ion ion-ios-snowy" style="font-size:40px"></i>
+        </div>
+        <span style="float:right;margin-right: 40px;margin-top: -2px;">
+          <h4 style="text-align:center">VAGAS</h4>
+          <h1 style="text-align:center;margin:0;">{{veiculo.vei_qt_vagas}}</h1>
+        </span>
+      </div>
+    </div>
+
+  </ion-content>
+
+</ion-view>

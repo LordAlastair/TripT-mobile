@@ -1,0 +1,27 @@
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-positive">
+      <ion-nav-back-button></ion-nav-back-button>
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+        <div>
+          <button
+            class="button button-icon ion-android-search"
+            ng-click="showFilterBar()"></button>
+        </div>
+
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="navigationView"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left" expose-aside-when="large">
+    <ion-header-bar class="bar-positive">
+      <div class="title">Menu</div>
+    </ion-header-bar>
+
+    <ion-content padding="false" class="side-menu-left has-header">
+
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

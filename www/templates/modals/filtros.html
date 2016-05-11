@@ -1,6 +1,5 @@
 <ion-modal-view>
   <ion-header-bar class="bar-positive">
-
     <h1 class="title">Filtrar busca</h1>
     <div class="button button-clear" ng-click="filtrarVeiculosModal.hide()">
       <span class="icon ion-ios-close-empty"></span>
@@ -29,10 +28,22 @@
             <option ng-repeat="instituicao in instituicoes" value="{{instituicao.ins_cd_instituicao}}">{{instituicao.ins_ds_instituicao}}</option>
           </select>
         </label>
+
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Tipo de Transporte
+          </div>
+          <select ng-model="filtro.vei_cd_veiculo">
+            <option value="">Selecione</option>
+            <option ng-value="TIPO_TRANSPORTE.VIAGEM" >Viagem</option>
+            <option ng-value="TIPO_TRANSPORTE.ESCOLAR" >Escolar</option>
+            <option ng-value="TIPO_TRANSPORTE.AMBOS" ng-selected="true">Escolar e Viagem</option>
+          </select>
+        </label>
       </ion-list>
 
       <div class="item" style="border: 0; padding-top:0; margin-top:0;">
-        <button class="button button-block button-outline button-positive" ng-click="">Buscar</button>
+        <button class="button button-block button-outline button-positive" ng-click="getVeiculos()">Buscar</button>
       </div>
     </form>
   </ion-content>
