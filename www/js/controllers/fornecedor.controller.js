@@ -4,7 +4,7 @@ angular
   $scope.TIPO_PESSOA = TIPO_PESSOA;
   $scope.TIPO_TRANSPORTE = TIPO_TRANSPORTE;
 
-  $scope.fornecedor = new Fornecedor();
+  $scope.fornecedor = {};
   $scope.save = save;
   $scope.isTipoPessoa = isTipoPessoa;
   $scope.isTipoTransporte = isTipoTransporte;
@@ -25,9 +25,8 @@ angular
 
   function _getFornecedor(){
     Fornecedor
-    .get($scope.fornecedor)
-    .$promise
-    .then(function (fornecedor) {
+    .query(function (fornecedor) {
+      console.log(fornecedor);
       if(!fornecedor){
         return;
       }
@@ -36,21 +35,13 @@ angular
   }
 
   function save(){
-    if ($scope.fornecedor.for_cd_fornecedor) {
-      Fornecedor
-      .update($scope.fornecedor)
-      .$promise
-      .then(_success)
-      .catch(_error)
-      .finally(_finally);
-    } else {
-      Fornecedor
-      .save($scope.fornecedor)
-      .$promise
-      .then(_success)
-      .catch(_error)
-      .finally(_finally);
-    }
+    Fornecedor
+    .save($scope.fornecedor)
+    .$promise
+    .then(_success)
+    .catch(_error)
+    .finally(_finally);
+    console.log($scope.fornecedor);
   }
 
   function _success(response) {
