@@ -18,5 +18,5 @@ angular
 
   var url = BACKEND_URL + '/fornecedor/:for_cd_fornecedor'
 
-  return $resource(url, {}, methods);
+  return $resource(url, [], methods);
 });
