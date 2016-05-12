@@ -25,23 +25,26 @@ angular
 
   function _getFornecedor(){
     Fornecedor
-    .query(function (fornecedor) {
+    .load(function (fornecedor) {
       console.log(fornecedor);
-      if(!fornecedor){
-        return;
-      }
       $scope.fornecedor = fornecedor;
     });
   }
 
   function save(){
-    Fornecedor
-    .save($scope.fornecedor)
-    .$promise
-    .then(_success)
-    .catch(_error)
-    .finally(_finally);
-    console.log($scope.fornecedor);
+    if($scope.fornecedor.for_cd_fornecedor){
+      Fornecedor
+      .update($scope.fornecedor)
+      .then(_success)
+      .catch(_error)
+    }else{
+      Fornecedor
+      .save($scope.fornecedor)
+      .then(function(fornecedor){
+        $scope.fornecedor = fornecedor.data;
+      })
+      .catch(_error)
+    }
   }
 
   function _success(response) {

@@ -27,21 +27,26 @@ angular
 
   function _getCliente(){
     Cliente
-    .query(function (cliente) {
-      if(!cliente){
-        return;
-      }
+    .load(function (cliente) {
       $scope.cliente = cliente;
     });
   }
 
   function save(){
-    Cliente
-    .save($scope.cliente)
-    .$promise
-    .then(_success)
-    .catch(_error)
-    .finally(_finally);
+    if($scope.cliente.cli_cd_cliente){
+      Cliente
+      .update($scope.cliente)
+      .then(_success)
+      .catch(_error)
+    }else{
+      Cliente
+      .save($scope.cliente)
+      .then(function(cliente){
+        $scope.cliente = cliente.data;
+        //console.log(cliente);
+      })
+      .catch(_error)
+    }
   }
 
   function _success(response) {
