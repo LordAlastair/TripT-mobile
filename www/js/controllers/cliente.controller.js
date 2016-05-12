@@ -44,7 +44,7 @@ angular
       .save($scope.cliente)
       .then(function(cliente){
         $scope.cliente = cliente.data;
-        //console.log(cliente);
+        _created();
       })
       .catch(_error)
     }
@@ -53,6 +53,12 @@ angular
   function _success(response) {
     $ionicPopup.alert({
       title: 'Cadastro atualizado com sucesso!',
+    });
+  }
+
+  function _created(response) {
+    $ionicPopup.alert({
+      title: 'Dados inclusos com sucesso!',
     });
   }
 
