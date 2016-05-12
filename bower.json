@@ -7,7 +7,8 @@
   "dependencies": {
     "angular-resource": "^1.5.2",
     "angular-jwt": "^0.0.9",
-    "ng-material-floating-button": "ng-mfb#^0.6.2"
+    "ng-material-floating-button": "ng-mfb#^0.6.2",
+    "ionic-filter-bar": "^1.1.1"
   },
   "resolutions": {
     "angular": ">= 1.0.8"
