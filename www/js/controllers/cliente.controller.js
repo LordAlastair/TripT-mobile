@@ -27,8 +27,9 @@ angular
 
   function _getCliente(){
     Cliente
-    .load(function (cliente) {
-      $scope.cliente = cliente;
+    .load()
+    .then(function (cliente) {
+      $scope.cliente = cliente.data;
     });
   }
 

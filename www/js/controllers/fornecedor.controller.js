@@ -25,9 +25,9 @@ angular
 
   function _getFornecedor(){
     Fornecedor
-    .load(function (fornecedor) {
-      console.log(fornecedor);
-      $scope.fornecedor = fornecedor;
+    .load()
+    .then(function (fornecedor) {
+      $scope.fornecedor = fornecedor.data;
     });
   }
 
