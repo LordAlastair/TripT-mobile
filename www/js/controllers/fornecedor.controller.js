@@ -1,6 +1,6 @@
 angular
 .module('app.controllers')
-.controller('FornecedorCtrl', function($scope, Fornecedor, $ionicPopup, $ionicLoading, TIPO_PESSOA, TIPO_TRANSPORTE) {
+.controller('FornecedorCtrl', function($scope, $state, $interval, Fornecedor, $ionicPopup, $ionicLoading, TIPO_PESSOA, TIPO_TRANSPORTE) {
   $scope.TIPO_PESSOA = TIPO_PESSOA;
   $scope.TIPO_TRANSPORTE = TIPO_TRANSPORTE;
 
@@ -11,8 +11,26 @@ angular
 
   _init();
 
+  function _setStateEventInterceptor() {
+    $scope.$on("$stateChangeStart", function(e, toState, toParams, fromState, fromParams) {
+      if (!fromState.name)
+        return;
+
+      if (fromState.name == $state.current.name && !$scope.fornecedor.for_cd_fornecedor) {
+        $ionicPopup.alert({
+          title: 'Cadastro obrigatório!',
+          template:'Salve o cadastro para continuar...'
+        })
+        .then(function(res){
+            $state.go('menu-fornecedor.meu-cadastro');
+        })
+      }
+    });
+  }
+
   function _init(){
     _getFornecedor();
+    _setStateEventInterceptor();
   }
 
   function isTipoPessoa(tipoPessoa){

@@ -1,6 +1,6 @@
 angular
 .module('app.controllers')
-.controller('ClienteCtrl', function($scope, Cliente, Instituicao, $ionicPopup, $ionicLoading) {
+.controller('ClienteCtrl', function($scope, $state, $interval, Cliente, Instituicao, $ionicPopup, $ionicLoading) {
 
   $scope.cliente = {};
   $scope.instituicoes = {};
@@ -12,6 +12,24 @@ angular
   function _init(){
     _getCliente();
     _getInstituicoes();
+    _setStateEventInterceptor();
+  }
+
+  function _setStateEventInterceptor() {
+    $scope.$on("$stateChangeStart", function(e, toState, toParams, fromState, fromParams) {
+      if (!fromState.name)
+        return;
+
+      if (fromState.name == $state.current.name && !$scope.cliente.cli_cd_cliente) {
+        $ionicPopup.alert({
+          title: 'Cadastro obrigatório!',
+          template:'Salve o cadastro para continuar...'
+        })
+        .then(function(res){
+            $state.go('menu-cliente.meu-cadastro');
+        })
+      }
+    });
   }
 
   function _getInstituicoes(){
