@@ -36,7 +36,9 @@ angular
     }
 
     if (response.status > 299 && response.status < 500) {
-      errorObject.errors = response.data.map(error => error.msg);
+      errorObject.errors = response.data.map(function(error) {
+        return error.msg;
+      });
     }
 
     if (errorObject.errors.length) {
