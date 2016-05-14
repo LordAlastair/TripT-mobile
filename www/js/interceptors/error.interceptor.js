@@ -58,7 +58,7 @@ angular
       title: "Tript",
       template: "Sessão expirada. Faça login novamente."
     })
-    .then(() => {
+    .then(function() {
       SessionService.clear();
       $state.go('login');
     });
