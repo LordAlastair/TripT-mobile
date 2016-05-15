@@ -3,23 +3,17 @@
   <nav
       mfb-menu
       position="br"
-      effect="zoomin"
-      active-icon="ion-close"
-      resting-icon="ion-more"
-      toggling-method="click">
-      <button
-      mfb-button
-      ng-click="filtrarVeiculosModal.show()"
-      icon="ion-android-menu"
-      label="Filtrar">
-    </button>
+      active-icon="ion-android-menu"
+      resting-icon="ion-android-menu"
+      main-action="filtrarVeiculosModal.show()"
+      >
   </nav>
 
   <ion-content class="has-header">
     <form class="list list-inset">
         <label class="item item-input">
           <i class="icon ion-search placeholder-icon"></i>
-          <input type="search" ng-model="pesquisar" placeholder="Pesquisar">
+          <input type="search" ng-model="pesquisar.$" placeholder="Pesquisar">
         </label>
     </form>
       <ion-refresher
@@ -27,11 +21,10 @@
       on-refresh="refresh()">
     </ion-refresher>
 
-    <div class="card" ng-repeat="veiculo in veiculos | filter: pesquisar" style="padding:10px">
-
+    <div class="card" ng-repeat="veiculo in veiculos | filter:pesquisar:strict" style="padding:10px">
         <h3 class="title">Destino UVV</h3>
         <div style="float:left">
-          <h4>Fornecedor</h4>
+          <h4>{{ veiculo.Usuario.Fornecedor.for_ds_fantasia_nome }}</h4>
           <p ng-show="veiculo.vei_ds_der">
             Registrado <span style="color:#ccc">({{veiculo.vei_ds_der}})</span>
           </p>
