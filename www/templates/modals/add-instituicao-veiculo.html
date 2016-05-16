@@ -39,7 +39,7 @@
           <option ng-repeat="x in instituicoes" value="{{x.ins_cd_instituicao}}">{{x.instituicao}}</option>
         </select>
       </div>
-      
+
     </label>
             <label class="item item-input item-select">
       <div class="input-label">
@@ -50,9 +50,9 @@
           <option ng-repeat="x in instituicoes" value="{{x.ins_cd_instituicao}}">{{x.instituicao}}</option>
         </select>
       </div>
-      
+
     </label>
-    
+
       </ion-list>
       <a ng-click="saveInstituicaoVeiculo()" class="button button-positive button-block button-outline">
         Cadastrar Rota
@@ -60,29 +60,3 @@
     </form>
   </ion-content>
 </ion-modal-view>
-
-{
-  "development": {
-    "username": "postgres",
-    "password": "passw0rd",
-    "database": "tript",
-    "port": "32776",
-    "dialect": "postgres"
-  },
-  "test": {
-    "username": "admin",
-    "password": "passw0rd",
-    "database": "tript",
-    "host": "192.168.99.100",
-    "port": "32775",
-    "dialect": "postgres"
-  },
-  "production": {
-    "username": "admin",
-    "password": "passw0rd",
-    "database": "tript",
-    "host": "db",
-    "port": "5432",
-    "dialect": "postgres"
-  }
-}
