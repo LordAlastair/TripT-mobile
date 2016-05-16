@@ -172,7 +172,7 @@ angular
     }
   })
   .state('transportes', {
-    url: '/home',
+    url: '/home/:inv_cd_tipo_transporte',
     templateUrl: 'templates/principal/home.html',
     controller: 'TransportesCtrl'
   })

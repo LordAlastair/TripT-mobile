@@ -1,6 +1,6 @@
 angular
 .module('app.controllers')
-.controller('TransportesCtrl', function($scope, $ionicLoading, $ionicModal, $ionicPopup, Search, Bairro, Instituicao, TIPO_TRANSPORTE, $ionicFilterBar) {
+.controller('TransportesCtrl', function($scope, $ionicLoading, $ionicModal, $ionicPopup, $stateParams, Search, Bairro, Instituicao, TIPO_TRANSPORTE) {
   $scope.TIPO_TRANSPORTE = TIPO_TRANSPORTE;
 
   $scope.veiculo = {};
@@ -44,6 +44,10 @@ angular
     .$promise
     .then(function (veiculos) {
       $scope.veiculos = veiculos;
+
+      $scope.pesquisar = {
+          inv_cd_tipo_transporte: $stateParams.inv_cd_tipo_transporte
+      };
       _toggleLoading();
     })
     .catch(_error);
