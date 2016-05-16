@@ -1,28 +1,31 @@
-<ion-view title="Tript">
+<ion-view title="Tript" hide-nav-bar="true">
   <ion-nav-buttons side="secondary">
     <button ui-sref="login()" class="button button-clear">
       Login
     </button>
   </ion-nav-buttons>
 
-  <ion-content overflow-scroll="true">
-    <div class="row row-center" style="height: 100%">
-      <div class="col text-center">
-        <img class="logo" src="img/logo.png">
+  <ion-content overflow-scroll="true" >
+    <div style="opacity:1;">
+      <div style="margin:0 auto;"><h4>O que você procura?</h4></div>
+      <a
+        ui-sref="transportes({inv_cd_tipo_transporte: 1})"
+        class="button icon-right button-block button-outline">
+          Quero Transporte Escolar
+      </a>
 
-        <div class="spacer" style="width: 100%; height: 60px;"></div>
+      <a
+        ui-sref="transportes({inv_cd_tipo_transporte: 2})"
+        class="button icon-right button-block button-outline">
+        Quero Viajar
+      </a>
+    </div>
 
-        <a
-          ui-sref="transportes"
-          class="button  icon-right ion-chevron-right button-block button-positive button-outline">
-          Buscar Transportes Escolares
-        </a>
-
-        <a
-          class="button  icon-right ion-chevron-right button-block button-positive button-outline">
-          Buscar Transportes Viagem
-        </a>
-      </div>
+    <!-- <div style="opacity:0.2;">
+      <img src="img/logo.png" style="top:100px;position:absolute;z-index:1;width:50%;left:25%"/>
+    </div> -->
+    <div style="opacity:0.3;">
+      <img src="img/bg-footer.jpg" style="max-width:100%;bottom:0;z-index:0;position:absolute;"/>
     </div>
   </ion-content>
 </ion-view>
