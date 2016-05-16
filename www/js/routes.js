@@ -60,7 +60,7 @@ angular
       }
     }
   })
-  
+
   .state('menu-fornecedor.instituicao-veiculos', {
     url: '/instituicao-veiculos',
     views: {
@@ -70,7 +70,7 @@ angular
       }
     }
   })
-  
+
   .state('menu-fornecedor.instituicao-veiculo', {
     url: '/instituicao-veiculo',
     views: {

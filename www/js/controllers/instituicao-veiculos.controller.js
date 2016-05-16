@@ -96,8 +96,8 @@ angular
 
       InstituicaoVeiculo
         .load()
-        .$promise
-        .then(function (instituicaoVeiculo) {
+        //.$promise
+        .then(function (instituicaoVeiculos) {
           $scope.instituicaoVeiculos = instituicaoVeiculos;
           _toggleLoading();
         })
@@ -105,7 +105,10 @@ angular
     }
 
     function _getVeiculoBairros() {
-      VeiculoBairro.load(function (veiculoBairros) {
+      VeiculoBairro
+      .query()
+      .$promise
+      .then(function (veiculoBairros) {
         $scope.veiculoBairros = veiculoBairros;
       });
     }
