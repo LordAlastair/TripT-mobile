@@ -171,6 +171,11 @@ angular
       }
     }
   })
+  .state('transportes', {
+    url: '/home',
+    templateUrl: 'templates/principal/home.html',
+    controller: 'TransportesCtrl'
+  })
 
 
   $urlRouterProvider.otherwise('/home');

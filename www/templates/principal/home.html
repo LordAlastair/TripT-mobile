@@ -21,21 +21,22 @@
       on-refresh="refresh()">
     </ion-refresher>
 
-    <div class="card" ng-repeat="veiculo in veiculos | filter:pesquisar:strict" style="padding:10px">
-        <h3 class="title">Destino UVV</h3>
+    <div class="card" ng-repeat="rota in veiculos | filter:pesquisar:strict" style="padding:10px">
+        <h3 class="title">{{ rota.Instituicao.ins_ds_instituicao  }}</h3>
         <div style="float:left">
-          <h4>{{ veiculo.Usuario.Fornecedor.for_ds_fantasia_nome }}</h4>
-          <p ng-show="veiculo.vei_ds_der">
-            Registrado <span style="color:#ccc">({{veiculo.vei_ds_der}})</span>
+          <h4>{{ rota.Veiculo.Usuario.Fornecedor.for_ds_fantasia_nome }}</h4>
+          <p ng-show="rota.Veiculo.vei_ds_der">
+            Registrado <span style="color:#ccc">({{ rota.Veiculo.vei_ds_der }})</span>
           </p>
-          <p ng-show="!veiculo.vei_ds_der">Sem Registro</p>
-          <i class="ion ion-wifi" style="font-size:30px;margin-right:10px"></i>
+          <p ng-show="!rota.Veiculo.vei_ds_der">Sem Registro</p>
+          <p>Turno: {{ rota.inv_ds_turno}}</p>
+          <!-- <i class="ion ion-wifi" style="font-size:30px;margin-right:10px"></i>
           <i class="ion ion-radio-waves" style="font-size:30px;margin-right:10px"></i>
-          <i class="ion ion-ios-snowy" style="font-size:40px"></i>
+          <i class="ion ion-ios-snowy" style="font-size:40px"></i> -->
         </div>
-        <span style="float:right;margin-right: 40px;margin-top: -2px;">
-          <h4 style="text-align:center">VAGAS</h4>
-          <h1 style="text-align:center;margin:0;">{{veiculo.vei_qt_vagas}}</h1>
+        <span style="float:right;margin-right: 40px;margin-top: -2px;width:65px;border-radius:50px">
+          <h1 style="text-align:center;margin:0;">{{ rota.Veiculo.vei_qt_vagas}}</h1>
+          <h5 style="text-align:center;margin:0;">VAGAS</h5>
         </span>
       </div>
     </div>

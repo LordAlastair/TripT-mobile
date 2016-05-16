@@ -11,6 +11,9 @@ angular
   $scope.loading = false;
   $scope.filtrarVeiculosModal = null;
   $scope.filterBarInstance = null;
+  $scope.getVeiculos = getVeiculos;
+  $scope.pesquisar = {}
+
 
   $scope.refresh = refresh;
 
@@ -36,13 +39,11 @@ angular
 
   function getVeiculos() {
     _toggleLoading();
-
     Search
     .query($scope.filtro)
     .$promise
     .then(function (veiculos) {
       $scope.veiculos = veiculos;
-      console.log($scope.veiculos);
       _toggleLoading();
     })
     .catch(_error);
@@ -87,7 +88,7 @@ angular
 
   function _setupFiltrarVeiculosModal() {
     $ionicModal
-    .fromTemplateUrl('templates/modals/filtros.html', {
+      .fromTemplateUrl('templates/modals/filtros.html', {
       scope: $scope,
       animation: 'slide-in-up'
     })
@@ -99,17 +100,17 @@ angular
       $scope.filtrarVeiculosModal.remove();
     });
 
-    $scope.$on('modal.hidden', function() {
-      $scope.filtro = {};
+    $scope.$on('modal.hidden', function(res) {
+      if($scope.filtro.bai_cd_bairro)
+        $scope.pesquisar.VeiculoBairros = {
+          veb_cd_bairro: $scope.filtro.bai_cd_bairro
+        };
+
+      if($scope.filtro.ins_cd_instituicao)
+        $scope.pesquisar.Instituicao = {
+          ins_cd_instituicao: $scope.filtro.ins_cd_instituicao
+        };
+
     });
   }
-
-  $scope.showFilterBar = function () {
-    var filterBarInstance = $ionicFilterBar.show({
-      items: $scope.veiculos,
-      update: function (filteredVeiculos, filterText) {
-        $scope.veiculos = filteredVeiculos;
-      },
-    });
-  };
 })
