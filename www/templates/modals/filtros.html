@@ -11,7 +11,7 @@
       <ion-list type="card">
         <label class="item item-input item-select">
           <div class="input-label">
-            Bairro
+            Bairro {{pesquisar.bai_cd_bairro}}
           </div>
           <select ng-model="filtro.bai_cd_bairro">
             <option value="">Selecione</option>
@@ -43,7 +43,7 @@
       </ion-list>
 
       <div class="item" style="border: 0; padding-top:0; margin-top:0;">
-        <button class="button button-block button-outline button-positive" ng-click="getVeiculos()">Buscar</button>
+        <button class="button button-block button-outline button-positive" ng-click="filtrarVeiculosModal.hide(filtro)">Buscar</button>
       </div>
     </form>
   </ion-content>
