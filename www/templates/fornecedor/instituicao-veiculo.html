@@ -1,0 +1,76 @@
+<ion-modal-view>
+  <ion-header-bar class="bar-positive">
+    <h1 class="title">Adicionar Rota</h1>
+    <div class="button button-clear" ng-click="addInstituicaoVeiculoModal.hide()">
+      <span class="icon ion-ios-close-empty"></span>
+    </div>
+  </ion-header-bar>
+
+  <ion-content padding="true" style="padding: 10px">
+    <form class="rota-form">
+      <ion-list type="card">
+        <label class="item item-input">
+          <span class="rota-form__label input-label">Bairro</span>
+          <input class="veiculo-form__field" type="text" ng-model="veiculo.vei_ds_modelo" required>
+        </label>
+
+        <label class="item item-input">
+          <span class="veiculo-form__label input-label">Placa do Veículo</span>
+          <input class="veiculo-form__field" type="text" ng-model="veiculo.vei_ds_placa" required>
+        </label>
+
+        <label class="item item-input">
+          <span class="veiculo-form__label input-label">DER</span>
+          <input class="veiculo-form__field" type="text" ng-model="veiculo.vei_ds_der" required>
+        </label>
+
+        <label class="item item-input">
+          <span class="veiculo-form__label input-label">Quantidade de Vagas</span>
+          <input class="veiculo-form__field" type="number" ng-model="veiculo.vei_qt_vagas" required>
+        </label>
+      </ion-list>
+      
+            <ion-list
+        type="card"
+        show-delete="showDelete"
+        can-swipe="true">
+
+        <ion-item class="text-center" ng-if="loading">
+          <ion-spinner class="spinner-positive"></ion-spinner>
+        </ion-item>
+
+        <ion-item ng-if="!veiculos.length && !loading">
+          Nenhum veículo cadastrado.
+        </ion-item>
+
+        <ion-item
+          ng-repeat="veiculo in filteredVeiculos = (veiculos | filter: filtro)"
+          ui-sref="menu-fornecedor.veiculo({ vei_cd_veiculo: veiculo.vei_cd_veiculo })">
+
+          {{veiculo.vei_ds_modelo}} - {{veiculo.vei_ds_placa}}
+
+          <ion-option-button
+            class="button-assertive"
+            ng-click="edit(item)">
+            Edit
+          </ion-option-button>
+
+          <ion-delete-button
+            class="ion-minus-circled"
+            ng-click="removeVeiculo(veiculo, $index)">
+          </ion-delete-button>
+        </ion-item>
+
+        <ion-item ng-if="!filteredVeiculos.length && filtro">
+          Nenhum veículo com o filtro '{{ filtro }}'.
+        </ion-item>
+      </ion-list>
+      
+      <a
+        ng-click="saveVeiculo()"
+        class="button button-positive button-block button-outline">
+        Cadastrar Veículo
+      </a>
+    </form>
+  </ion-content>
+</ion-modal-view>

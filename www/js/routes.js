@@ -60,6 +60,26 @@ angular
       }
     }
   })
+  
+  .state('menu-fornecedor.instituicao-veiculos', {
+    url: '/instituicao-veiculos',
+    views: {
+      'navigationView': {
+        templateUrl: 'templates/fornecedor/instituicao-veiculos.html',
+        controller: 'InstituicaoVeiculosCtrl'
+      }
+    }
+  })
+  
+  .state('menu-fornecedor.instituicao-veiculo', {
+    url: '/instituicao-veiculo',
+    views: {
+      'navigationView': {
+        templateUrl: 'templates/fornecedor/instituicao-veiculo.html',
+        controller: 'InstituicaoVeiculoCtrl'
+      }
+    }
+  })
 
   .state('menu-fornecedor.changePass', {
     url: '/changePass',

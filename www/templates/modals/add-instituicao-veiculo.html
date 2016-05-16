@@ -1,0 +1,88 @@
+<ion-modal-view>
+  <ion-header-bar class="bar-positive">
+    <h1 class="title">Adicionar Nova Rota</h1>
+    <div class="button button-clear" ng-click="addVeiculoModal.hide()">
+      <span class="icon ion-ios-close-empty"></span>
+    </div>
+  </ion-header-bar>
+
+  <ion-content padding="true" style="padding: 10px">
+    <form class="instituica-veiculo-form">
+      <ion-list type="card">
+        <label class="item item-input item-select">
+      <div class="input-label">
+        Selecione o veiculo da rota
+      </div>
+      <div ng-controller="VeiculosCtrl">
+        <select ng-model="veiculo" ng-options="x.vei_ds_placa for x in veiculos">
+          <option ng-repeat="x in veiculos" value="{{x.vei_cd_veiculo}}">{{x.veiculo}}</option>
+        </select>
+      </div>
+    </label>
+
+        <label class="item item-input item-select">
+        <div class="input-label">
+          Turno
+        </div>
+        <select ng-model="InstituicaoVeiculo.inv_ds_turno" >
+          <option ng-value="TURNO.MATUTINO" ng-selected="isTurno(TURNO.MATUTINO)">Matutino</option>
+          <option ng-value="TURNO.VESPERTINO" ng-selected="isTurno(TURNO.VESPERTINO)">Vespertino</option>
+          <option ng-value="TURNO.NOTURNO" ng-selected="isTurno(TURNO.NOTURNO)">Noturno</option>
+        </select>
+      </label>
+        <label class="item item-input item-select">
+      <div class="input-label">
+        Selecione a instituição da rota
+      </div>
+      <div ng-controller="InstituicaoCtrl">
+        <select ng-model="instituicao" ng-options="x.ins_ds_instituicao for x in instituicoes">
+          <option ng-repeat="x in instituicoes" value="{{x.ins_cd_instituicao}}">{{x.instituicao}}</option>
+        </select>
+      </div>
+      
+    </label>
+            <label class="item item-input item-select">
+      <div class="input-label">
+        Selecione a instituição da rota
+      </div>
+      <div ng-controller="InstituicaoCtrl">
+        <select ng-model="instituicao" ng-options="x.ins_ds_instituicao for x in instituicoes">
+          <option ng-repeat="x in instituicoes" value="{{x.ins_cd_instituicao}}">{{x.instituicao}}</option>
+        </select>
+      </div>
+      
+    </label>
+    
+      </ion-list>
+      <a ng-click="saveInstituicaoVeiculo()" class="button button-positive button-block button-outline">
+        Cadastrar Rota
+      </a>
+    </form>
+  </ion-content>
+</ion-modal-view>
+
+{
+  "development": {
+    "username": "postgres",
+    "password": "passw0rd",
+    "database": "tript",
+    "port": "32776",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "admin",
+    "password": "passw0rd",
+    "database": "tript",
+    "host": "192.168.99.100",
+    "port": "32775",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "admin",
+    "password": "passw0rd",
+    "database": "tript",
+    "host": "db",
+    "port": "5432",
+    "dialect": "postgres"
+  }
+}
