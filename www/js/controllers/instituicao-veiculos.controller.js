@@ -1,9 +1,10 @@
 angular
   .module('app.controllers')
-  .controller('InstituicaoVeiculosCtrl', function ($scope, $state, $interval, $ionicLoading, $ionicModal, $ionicPopup, InstituicaoVeiculo, VeiculoBairro) {
+  .controller('InstituicaoVeiculosCtrl', function ($scope, $state, $interval, $ionicLoading, $ionicModal, $ionicPopup, Bairro, InstituicaoVeiculo, VeiculoBairro) {
     $scope.instituicaoVeiculo = {};
     $scope.instituicaoVeiculos = [];
     $scope.veiculoBairros = [];
+    $scope.bairros = [];
 
     $scope.addInstituicaoVeiculoModal = null;
 
@@ -15,6 +16,7 @@ angular
     $scope.saveInstituicaoVeiculo = saveInstituicaoVeiculo;
     $scope.removeInstituicaoVeiculo = removeInstituicaoVeiculo;
     $scope.refresh = refresh;
+    $scope.selection = [];
 
     _init();
 
@@ -22,6 +24,20 @@ angular
       _getInstituicaoVeiculos();
       _getVeiculoBairros();
       _setupAddInstituicaoVeiculoModal();
+      _getBairros();
+    }
+
+    function _getBairros() {
+      _toggleLoading();
+
+      Bairro
+      .query()
+      .$promise
+      .then(function (bairros) {
+        $scope.bairros = bairros;
+        _toggleLoading();
+      })
+      .catch(_error);
     }
 
     function _setupAddInstituicaoVeiculoModal() {
@@ -69,14 +85,21 @@ angular
           }
         });
     }
-    function saveInstituicaoVeiculo(instituicaoVeiculo) {
+    function saveInstituicaoVeiculo() {
+      $scope.instituicaoVeiculo.bairros = $scope.selection;
       InstituicaoVeiculo
         .save($scope.instituicaoVeiculo)
         .then(function (instituicaoVeiculo) {
-          $scope.instituicaoVeiculo = instituicaoVeiculo;
+          //$scope.instituicaoVeiculo = instituicaoVeiculo;
           _created();
         })
         .catch(_error)
+    }
+
+    function _created(response) {
+      $ionicPopup.alert({
+        title: 'Dados inclusos com sucesso!',
+      });
     }
 
     function _saveInstituicaoVeiculoSuccess(instituicaoVeiculo) {
@@ -127,4 +150,19 @@ angular
         template: response.errorMessage
       });
     }
+
+    $scope.toggleSelection = function toggleSelection(bairro) {
+      var idx = $scope.selection.indexOf(bairro);
+
+      // is currently selected
+      if (idx > -1) {
+        $scope.selection.splice(idx, 1);
+      }
+
+      // is newly selected
+      else {
+        $scope.selection.push(bairro);
+      }
+    };
+
   })
