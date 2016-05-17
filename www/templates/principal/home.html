@@ -21,9 +21,9 @@
     </ion-refresher>
 
     <div class="card" ng-repeat="rota in veiculos | filter:pesquisar:strict" style="padding:10px">
-        <h3 class="title">{{ rota.Instituicao.ins_ds_instituicao  }}</h3>
+        <h3 class="title" ng-show="rota.inv_cd_tipo_transporte == 1">{{ rota.Instituicao.ins_ds_instituicao  }}</h3>
         <div style="float:left">
-          <h4>{{ rota.Veiculo.Usuario.Fornecedor.for_ds_fantasia_nome }}</h4>
+          <h4>{{ rota.Fornecedor.for_ds_fantasia_nome }}</h4>
           <p ng-show="rota.Veiculo.vei_ds_der">
             Registrado <span style="color:#ccc">({{ rota.Veiculo.vei_ds_der }})</span>
           </p>
@@ -33,7 +33,7 @@
           <i class="ion ion-radio-waves" style="font-size:30px;margin-right:10px"></i>
           <i class="ion ion-ios-snowy" style="font-size:40px"></i> -->
         </div>
-        <span ng-show="rota.inv_cd_tipo_transporte == 1" style="float:right;margin-right: 40px;margin-top: -2px;width:65px;border-radius:50px">
+        <span ng-show="rota.inv_cd_tipo_transporte == 1" style="float:right;margin-right: 20px;margin-top: 20px;width:65px;border-radius:50px">
           <h1 style="text-align:center;margin:0;">{{ rota.Veiculo.vei_qt_vagas}}</h1>
           <h5 style="text-align:center;margin:0;">VAGAS</h5>
         </span>
