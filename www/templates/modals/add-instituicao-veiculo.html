@@ -1,0 +1,87 @@
+<ion-modal-view>
+  <ion-header-bar class="bar-positive">
+    <h1 class="title">Adicionar Nova Rota</h1>
+    <div class="button button-clear" ng-click="addInstituicaoVeiculoModal.hide()">
+      <span class="icon ion-ios-close-empty"></span>
+    </div>
+  </ion-header-bar>
+
+  <ion-content padding="true" style="padding: 10px">
+    <form class="instituica-veiculo-form">
+      <ion-list type="card">
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Veículo
+          </div>
+          <div ng-controller="VeiculosCtrl">
+            <select ng-model="instituicaoVeiculo.inv_cd_veiculo" ng-options="x.vei_ds_placa for x in veiculos">
+              <option ng-repeat="x in veiculos" value="{{x.vei_cd_veiculo}}">{{x.veiculo}}</option>
+            </select>
+          </div>
+        </label>
+
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Turno
+          </div>
+          <select ng-model="instituicaoVeiculo.inv_ds_turno" >
+            <option ng-value="TURNO.MATUTINO" ng-selected="isTurno(TURNO.MATUTINO)">Matutino</option>
+            <option ng-value="TURNO.VESPERTINO" ng-selected="isTurno(TURNO.VESPERTINO)">Vespertino</option>
+            <option ng-value="TURNO.NOTURNO" ng-selected="isTurno(TURNO.NOTURNO)">Noturno</option>
+          </select>
+        </label>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Tipo de transporte
+          </div>
+          <select ng-model="instituicaoVeiculo.inv_cd_tipo_transporte" >
+            <option ng-value="1" ng-selected="">Escolar</option>
+            <option ng-value="2" ng-selected="">Viajem</option>
+          </select>
+        </label>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Instituição
+          </div>
+          <div ng-controller="InstituicaoCtrl">
+            <select ng-model="instituicaoVeiculo.inv_cd_instituicao" ng-options="x.ins_ds_instituicao for x in instituicoes">
+              <option ng-repeat="x in instituicoes" value="{{x.ins_cd_instituicao}}">{{x.instituicao}}</option>
+            </select>
+          </div>
+        </label>
+
+      </ion-list>
+
+      <ion-list type="card">
+        <div style="height:145px">
+
+
+        <form class="list list-inset">
+            <label class="item item-input">
+              <i class="icon ion-search placeholder-icon"></i>
+              <input type="search" ng-model="filtrarBairro" placeholder="Pesquisar bairro">
+            </label>
+        </form>
+
+        <label class="item item-input" ng-repeat="bairro in bairros | filter:filtrarBairro" >
+          <ion-checkbox
+          name="selectedBairros[]"
+          ng-checked="selection.indexOf(bairro.bai_cd_bairro) > -1"
+          ng-click="toggleSelection(bairro.bai_cd_bairro)">
+          {{ bairro.bai_ds_bairro }} <input class="veiculo-form__field" type="number" placeholder="R$ 0,00" ng-model="vl_bairro"></ion-checkbox>
+
+        </label>
+        </div>
+      </ion-list>
+
+      <div ng-repeat="bairro in bairros">
+        <div ng-repeat="b in selection">
+              <span ng-show="b == bairro.bai_cd_bairro">{{bairro.bai_ds_bairro}}</span>
+        </div>
+      </div>
+      <a ng-click="saveInstituicaoVeiculo()" class="button button-positive button-block button-outline">
+        Cadastrar Rota
+      </a>
+    </form>
+  </ion-content>
+</ion-modal-view>

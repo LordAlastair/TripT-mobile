@@ -1,0 +1,105 @@
+<ion-view title="Rotas" cache-view="false">
+  <nav mfb-menu position="br" effect="zoomin" active-icon="ion-close" resting-icon="ion-more" toggling-method="click">
+    <button mfb-button ng-click="addInstituicaoVeiculoModal.show()" icon="ion-plus-round" label="Adicionar Rota">
+    </button>
+  </nav>
+
+  <ion-nav-buttons side="secondary">
+    <button class="button button-icon icon ion-ios-minus-outline" ng-disabled="!InstituicaoVeiculos.length" ng-click="toggleDelete()">
+    </button>
+  </ion-nav-buttons>
+
+  <ion-content overflow-scroll="true">
+    <ion-content class="has-header" style="padding-bottom: 100px;">
+
+      <ion-refresher pulling-text="Puxe para atualizar..." on-refresh="refresh()">
+      </ion-refresher>
+
+      <ion-list type="card" show-delete="showDelete" can-swipe="true">
+
+        <ion-item class="text-center" ng-if="loading">
+          <ion-spinner class="spinner-positive"></ion-spinner>
+        </ion-item>
+
+        <ion-item ng-if="!InstituicaoVeiculos.length && !loading">
+          Nenhuma rota cadastrado.
+        </ion-item>
+
+
+      </ion-list>
+    </ion-content>
+  </ion-content>
+</ion-view>
+
+<ion-view title="Rotas" cache-view="false">
+  <nav
+    mfb-menu
+    position="br"
+    effect="zoomin"
+    active-icon="ion-plus-round"
+    resting-icon="ion-plus-round"
+    main-action="addInstituicaoVeiculoModal.show()"
+    >
+    </button>
+  </nav>
+
+  <ion-nav-buttons side="secondary">
+    <button
+      class="button button-icon icon ion-ios-minus-outline"
+      ng-disabled="!InstituicaoVeiculos.length"
+      ng-click="toggleDelete()">
+    </button>
+  </ion-nav-buttons>
+
+  <ion-content overflow-scroll="true">
+    <form class="list list-inset">
+        <label class="item item-input">
+          <i class="icon ion-search placeholder-icon"></i>
+          <input type="search" ng-model="filtro" placeholder="Search">
+        </label>
+    </form>
+    <ion-content class="has-header" style="padding-bottom: 100px;">
+
+      <ion-refresher
+        pulling-text="Puxe para atualizar..."
+        on-refresh="refresh()">
+      </ion-refresher>
+
+      <ion-list
+        type="card"
+        show-delete="showDelete"
+        can-swipe="true">
+
+        <ion-item class="text-center" ng-if="loading">
+          <ion-spinner class="spinner-positive"></ion-spinner>
+        </ion-item>
+
+        <ion-item ng-if="!veiculos.length && !loading">
+          Nenhuma rota cadastrada.
+        </ion-item>
+
+        <ion-item
+          ng-repeat="veiculo in filteredVeiculos = (veiculos | filter: filtro)"
+          ui-sref="menu-fornecedor.veiculo({ vei_cd_veiculo: veiculo.vei_cd_veiculo })">
+
+          {{veiculo.vei_ds_modelo}} - {{veiculo.vei_ds_placa}}
+
+          <ion-option-button
+            class="button-assertive"
+            ng-click="edit(item)">
+            Edit
+          </ion-option-button>
+
+          <ion-delete-button
+            class="ion-minus-circled"
+            ng-click="removeVeiculo(veiculo, $index)">
+          </ion-delete-button>
+        </ion-item>
+
+        <ion-item ng-if="!filteredVeiculos.length && filtro">
+          Nenhum veículo com o filtro '{{ filtro }}'.
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-content>
+</ion-view>
