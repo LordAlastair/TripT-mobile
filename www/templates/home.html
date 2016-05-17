@@ -1,31 +1,33 @@
-<ion-view title="Tript" hide-nav-bar="true">
-  <ion-nav-buttons side="secondary">
-    <button ui-sref="login()" class="button button-clear">
+<ion-view title="O que você precisa?" hide-nav-bar="true">
+  <div class="bar bar-header">
+    <div class="title"><h4 style="color: #3D4D9A;">O que você procura?</h4></div>
+    <button
+      class="button button-clear button-positive"
+      ui-sref="login()">
       Login
     </button>
-  </ion-nav-buttons>
+  </div>
+  <ion-content overflow-scroll="false" style="background: url(img/g4149.png) no-repeat bottom; background-size: contain;" >
+      <div style="position: relative; top: 300px;">
+        <div>
+          <div class="botao">
+            <a
+              ui-sref="transportes({inv_cd_tipo_transporte: 1})"
+              class="button icon-right ion-chevron-right button button-block button-outline button-positive">
+                Quero Transporte Escolar &nbsp;
+            </a>
+          </div>
+        </div>
 
-  <ion-content overflow-scroll="true" >
-    <div style="opacity:1;">
-      <div style="margin:0 auto;"><h4>O que você procura?</h4></div>
-      <a
-        ui-sref="transportes({inv_cd_tipo_transporte: 1})"
-        class="button  icon-right button-block button-outline">
-          Quero Transporte Escolar
-      </a>
-
-      <a
-        ui-sref="transportes({inv_cd_tipo_transporte: 2})"
-        class="button icon-right button-block button-outline">
-        Quero Viajar
-      </a>
-    </div>
-
-    <!-- <div style="opacity:0.2;">
-      <img src="img/logo.png" style="top:100px;position:absolute;z-index:1;width:50%;left:25%"/>
-    </div> -->
-    <div style="opacity:0.3;">
-      <img src="img/bg-footer.jpg" style="max-width:100%;bottom:0;z-index:0;position:absolute;"/>
-    </div>
+        <div>
+          <div>
+            <a
+              ui-sref="transportes({inv_cd_tipo_transporte: 2})"
+              class="button icon-right ion-chevron-right button button-block button-outline button-positive">
+              Quero Transporte Viagem
+            </a>
+          </div>
+      </div>
+  </div>
   </ion-content>
 </ion-view>
