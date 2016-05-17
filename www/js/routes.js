@@ -176,6 +176,15 @@ angular
     templateUrl: 'templates/principal/home.html',
     controller: 'TransportesCtrl'
   })
+  .state('menu-fornecedor.instituicao-veiculos', {
+    url: '/instituicao-veiculos',
+    views: {
+      'navigationView': {
+        templateUrl: 'templates/fornecedor/instituicao-veiculos.html',
+        controller: 'InstituicaoVeiculosCtrl'
+      }
+    }
+  })
 
 
   $urlRouterProvider.otherwise('/home');
