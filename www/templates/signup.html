@@ -11,13 +11,13 @@
         <span class="input-label">Senha</span>
         <input type="password" ng-model="usuario.usu_ds_senha" name="senha" ng-required="required">
       </label>
-      <p align="center" ng-if="usuario.usu_ds_senha.length < 6">Senha deve conter mais de 5 caracteres</p>
+      <p align="center" ng-if="(formsingup.senha.$touched && usuario.usu_ds_senha.length < 6)">Senha deve conter mais de 5 caracteres</p>
 
       <label class="item item-input">
         <span class="input-label">Confirme Senha</span>
         <input type="password" ng-model="usuario.confirm_usu_ds_senha" name="confirmasenha" ng-required="required">
       </label>
-      <p align="center" ng-if="!(usuario.usu_ds_senha == usuario.confirm_usu_ds_senha)" >Senhas não batem</p>
+      <p align="center" ng-if="(formsingup.confirmasenha.$touched && !(usuario.usu_ds_senha == usuario.confirm_usu_ds_senha))" >Senhas não batem</p>
 
       <button
         ng-click="signup()"
